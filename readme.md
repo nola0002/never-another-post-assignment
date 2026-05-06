@@ -17,7 +17,6 @@ Projektet anvender **MVVM (Model-View-ViewModel)** for at opdele ansvar:
 
 ---
 
-
 ## Mappestruktur
 
 ```plaintext
