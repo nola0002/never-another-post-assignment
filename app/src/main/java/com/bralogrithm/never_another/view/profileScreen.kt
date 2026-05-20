@@ -20,6 +20,9 @@ fun ProfileScreen(
         verticalArrangement = Arrangement.Center) {
         Text("This is the Profile Screen")
 
+
+
+
         NavigationBarBottom(
             selectedScreen = selectedScreen,
             onScreenClick = onScreenClick
