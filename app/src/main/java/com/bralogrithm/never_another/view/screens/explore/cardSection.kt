@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bralogrithm.never_another.R
 import com.bralogrithm.never_another.model.ExploreCardSectionText
+import com.bralogrithm.never_another.ui.theme.NohemiFontFamily
 
 @Composable
 fun CardSection(
@@ -98,9 +99,8 @@ fun CardSection(
                             text = listOfCardSectionText[selectedCarrouselText].thickText,
                             textAlign = TextAlign.Center,
                             fontSize = 24.sp,
+                            fontFamily = NohemiFontFamily,
                             fontWeight = FontWeight.ExtraBold,
-
-
                             )
 
                         Spacer(modifier = Modifier.height(16.dp))
@@ -109,6 +109,7 @@ fun CardSection(
                             text = listOfCardSectionText[selectedCarrouselText].thinText,
                             textAlign = TextAlign.Center,
                             fontSize = 16.sp,
+                            fontFamily = NohemiFontFamily,
                             fontWeight = FontWeight.Normal,
                         )
                     }
