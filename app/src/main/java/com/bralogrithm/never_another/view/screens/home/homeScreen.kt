@@ -1,4 +1,4 @@
-package com.bralogrithm.never_another.view
+package com.bralogrithm.never_another.view.screens.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.bralogrithm.never_another.model.Screen
+import com.bralogrithm.never_another.view.components.NavigationBarBottom
 
 @Composable
 fun HomeScreen(
