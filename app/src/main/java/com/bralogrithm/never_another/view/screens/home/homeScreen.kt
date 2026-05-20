@@ -14,11 +14,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.bralogrithm.never_another.R
 import com.bralogrithm.never_another.model.Screen
 import com.bralogrithm.never_another.view.components.NavigationBarBottom
 import com.bralogrithm.never_another.ui.theme.Black
+import com.bralogrithm.never_another.ui.theme.InterFontFamily
 import com.bralogrithm.never_another.ui.theme.White
 
 @Composable
@@ -39,9 +42,11 @@ fun HomeScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-
-            // ADD WEIGHT HERE: This tells Compose not to re-calculate
-            // the height of the image while the text moves.
+            Marquee(
+                modifier = Modifier
+                    .background(Black)
+                    .padding(vertical = 8.dp)
+            )
             Box(modifier = Modifier.weight(1f)) {
                 ImageArea()
             }
@@ -49,7 +54,18 @@ fun HomeScreen(
     }
 }
 
-
+@Composable
+fun Marquee(modifier: Modifier = Modifier) {
+    Text(
+        text = "Bestil i dag og få fri fragt".uppercase(),
+        modifier = modifier
+            .fillMaxWidth(),
+        fontFamily = InterFontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        color = White
+    )
+}
 
 @Composable
 fun ImageArea() {
@@ -59,7 +75,7 @@ fun ImageArea() {
         Image(
             painter = painterResource(id = R.drawable.landing_page_image),
             contentDescription = "Background",
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.height(590.dp),
             contentScale = ContentScale.Crop
         )
 

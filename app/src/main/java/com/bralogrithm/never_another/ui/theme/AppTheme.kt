@@ -9,8 +9,22 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.googlefonts.GoogleFont
 import androidx.compose.ui.unit.sp
 import com.bralogrithm.never_another.R
+import androidx.compose.ui.text.googlefonts.Font
+
+val provider = GoogleFont.Provider(
+    providerAuthority = "com.google.android.gms.fonts",
+    providerPackage = "com.google.android.gms",
+    certificates = R.array.com_google_android_gms_fonts_certs
+)
+
+val InterFontFamily = FontFamily(
+    Font(googleFont = GoogleFont("Inter"), fontProvider = provider, weight = FontWeight.Normal),
+    Font(googleFont = GoogleFont("Inter"), fontProvider = provider, weight = FontWeight.Medium),
+    Font(googleFont = GoogleFont("Inter"), fontProvider = provider, weight = FontWeight.Bold)
+)
 
 val NohemiFontFamily = FontFamily(
     Font(R.font.nohemi_thin, FontWeight.Thin),
@@ -23,6 +37,8 @@ val NohemiFontFamily = FontFamily(
     Font(R.font.nohemi_extrabold, FontWeight.ExtraBold),
     Font(R.font.nohemi_black, FontWeight.Black)
 )
+
+
 
 val Orange = Color(0xFFF37401)
 val Charcoal = Color(0xFF2A2A2C)
