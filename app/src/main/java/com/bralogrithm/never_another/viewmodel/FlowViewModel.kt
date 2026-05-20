@@ -4,20 +4,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.bralogrithm.never_another.model.Flows
+import com.bralogrithm.never_another.model.Flow
 
 class FlowViewModel : ViewModel() {
     val steps = listOf(
-        Flows.Intro,
-        Flows.UpperSize,
-        Flows.UnderSize,
-        Flows.BreastHeight,
-        Flows.BreastSize,
-        Flows.CheckSizes,
-        Flows.OrdreConfirmed
+        Flow.Intro,
+        Flow.UpperSize,
+        Flow.UnderSize,
+        Flow.BreastHeight,
+        Flow.BreastSize,
+        Flow.CheckSizes,
+        Flow.OrdreConfirmed
     )
 
-    private val stepsWithoutOverlay = setOf(Flows.Intro, Flows.CheckSizes, Flows.OrdreConfirmed)
+    private val stepsWithoutOverlay = setOf(Flow.Intro, Flow.CheckSizes, Flow.OrdreConfirmed)
 
     var currentPage by mutableStateOf(0)
     var showOverlay by mutableStateOf(false)

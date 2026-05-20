@@ -1,6 +1,6 @@
 package com.bralogrithm.never_another.model;
 
-public enum Flows {
+public enum Flow {
     Intro,
     UpperSize,
     UnderSize,
