@@ -63,7 +63,8 @@ class MainActivity : ComponentActivity() {
                                 listOfCardSectionText = viewModel.exploreCarrouselOne,
                                 selectedCarrouselText = viewModel.exploreCarrouselOneIndex,
                                 carrouselBackButtonClick = { viewModel.carrouselBackButtonClick() },
-                                carrouselForwardButtonClick = { viewModel.carrouselForwardButtonClick() }
+                                carrouselForwardButtonClick = { viewModel.carrouselForwardButtonClick() },
+                                trustPilotCards = viewModel.trustPilotCards
                             )
                         }
 

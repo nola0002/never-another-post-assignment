@@ -6,8 +6,10 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.bralogrithm.never_another.model.ExploreCardSectionText
 import com.bralogrithm.never_another.model.Screen
+import com.bralogrithm.never_another.model.TrustPilotCardInfo
+import com.bralogrithm.never_another.view.screens.explore.TrustPilotCard
 
-class NeverAnotherViewModel: ViewModel() {
+class NeverAnotherViewModel : ViewModel() {
 
     var selectedScreen by mutableStateOf(Screen.Home)
 
@@ -33,10 +35,12 @@ class NeverAnotherViewModel: ViewModel() {
             ),
             ExploreCardSectionText(
                 thickText = "Luftig ryg og sider",
-                thinText = "Strikken er let og luftig dér, hvor du har brug for det. Du holdes kølig – også på de lange dage."),
-            )
+                thinText = "Strikken er let og luftig dér, hvor du har brug for det. Du holdes kølig – også på de lange dage."
+            ),
+        )
     )
-    fun carrouselBackButtonClick(){
+
+    fun carrouselBackButtonClick() {
         if (exploreCarrouselOneIndex == 0) {
             exploreCarrouselOneIndex = exploreCarrouselOne.size - 1
         } else {
@@ -44,13 +48,36 @@ class NeverAnotherViewModel: ViewModel() {
         }
     }
 
-    fun carrouselForwardButtonClick(){
+    fun carrouselForwardButtonClick() {
         if (exploreCarrouselOneIndex == exploreCarrouselOne.size - 1) {
             exploreCarrouselOneIndex = 0
         } else {
             exploreCarrouselOneIndex += 1
         }
     }
+
+    var trustPilotCards by mutableStateOf(
+        listOf(
+            TrustPilotCardInfo(
+                name = "Karen Sørensen",
+                date = "1. april 2026",
+                stars = 5,
+                review = "TUSIND TAK FOR ET ENESTÅENDE DYGTIGT DESIGN ... JEG ER SÅ TILFREDS & GLAD !"
+            ),
+            TrustPilotCardInfo(
+                name = "Susanne Jensen",
+                date = "24. februar 2026",
+                stars = 5,
+                review = "Fremragende bh, Man mærker ikke at man har BH på. "
+            ),
+            TrustPilotCardInfo(
+                name = "Susanne Jensen",
+                date = "24. februar 2026",
+                stars = 5,
+                review = "Der er en rigtig god vejledning i forbindelse med bestilling. Og slutproduktet lever 100% op til forventningerne. En super behagelig BH."
+            )
+        )
+    )
 
     var exploreCarrouselTwo by mutableStateOf(
         listOf(
@@ -68,11 +95,11 @@ class NeverAnotherViewModel: ViewModel() {
             ),
             ExploreCardSectionText(
                 thickText = "Ingen rester. Intet spild",
-                thinText = "Når en bh strikkes i ét stykke, er der intet stof tilbage på gulvet. Kun det, du har på."),
+                thinText = "Når en bh strikkes i ét stykke, er der intet stof tilbage på gulvet. Kun det, du har på."
+            ),
 
             )
     )
-
 
 
 }
