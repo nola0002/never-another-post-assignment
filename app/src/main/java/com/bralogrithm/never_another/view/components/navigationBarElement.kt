@@ -1,4 +1,4 @@
-package com.bralogrithm.never_another.view
+package com.bralogrithm.never_another.view.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

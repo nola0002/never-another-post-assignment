@@ -1,4 +1,4 @@
-package com.bralogrithm.never_another.view
+package com.bralogrithm.never_another.view.screens.explore
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,9 +8,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.bralogrithm.never_another.model.Screen
+import com.bralogrithm.never_another.view.components.NavigationBarBottom
 
 @Composable
-fun MyBraScreen(
+fun ExploreScreen(
     selectedScreen: Screen,
     onScreenClick: (Screen) -> Unit
 
@@ -19,10 +20,11 @@ fun MyBraScreen(
         .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center) {
-        Text("This is the My Bra Screen")
+        Text("This is the Explore Screen")
 
         NavigationBarBottom(
             selectedScreen = selectedScreen,
             onScreenClick = onScreenClick
-        )    }
+        )
+    }
 }

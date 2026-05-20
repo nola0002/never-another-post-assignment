@@ -1,4 +1,4 @@
-package com.bralogrithm.never_another.view
+package com.bralogrithm.never_another.view.components
 
 import com.bralogrithm.never_another.model.Screen
 import androidx.compose.foundation.layout.Arrangement

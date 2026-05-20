@@ -1,4 +1,4 @@
-package com.bralogrithm.never_another.view
+package com.bralogrithm.never_another.view.screens.profile
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,18 +8,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.bralogrithm.never_another.model.Screen
+import com.bralogrithm.never_another.view.components.NavigationBarBottom
 
 @Composable
-fun ExploreScreen(
+fun ProfileScreen(
     selectedScreen: Screen,
     onScreenClick: (Screen) -> Unit
-
 ){
     Column(modifier = Modifier
         .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center) {
-        Text("This is the Explore Screen")
+        Text("This is the Profile Screen")
+
+
+
 
         NavigationBarBottom(
             selectedScreen = selectedScreen,
