@@ -8,9 +8,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -27,11 +31,16 @@ import androidx.compose.ui.unit.sp
 import com.bralogrithm.never_another.model.Screen
 import com.bralogrithm.never_another.view.components.NavigationBarBottom
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.MailOutline
+import androidx.compose.material.icons.outlined.Inventory2
+import androidx.compose.material.icons.outlined.Sell
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.vector.ImageVector
 import com.bralogrithm.never_another.model.InfoItem
+import com.bralogrithm.never_another.ui.theme.NohemiFontFamily
 
 @Composable
 fun ProfileScreen(
@@ -58,9 +67,9 @@ fun ProfileScreen(
             ProfileHeader()
             InfoSection(
                 items = listOf(
-                    InfoItem("FULDE NAVN", "Henriette Jensen Andersen"),
-                    InfoItem("ADRESSE", "Københavnervej 3, 2500 Valby"),
-                    InfoItem("E-EMAIL", "jensen.carla2500@gmail.com")
+                    InfoItem("FULDE NAVN", "Henriette Jensen Andersen", Icons.Outlined.Sell),
+                    InfoItem("ADRESSE", "Københavnervej 3, 2500 Valby", Icons.Outlined.Inventory2),
+                    InfoItem("E-EMAIL", "jensen.carla2500@gmail.com", Icons.Default.MailOutline)
                 ),
             )
             ActionButtons(
@@ -86,14 +95,24 @@ fun ProfileHeader(modifier: Modifier = Modifier) {
             contentDescription = "Profil picture",
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .size(90.dp)
+                .size(80.dp)
                 .clip(CircleShape),
         )
 
         Text(
             text = "MIN PROFIL",
             fontSize = 45.sp,
-            fontWeight = Bold
+            fontWeight = Bold,
+            fontFamily = NohemiFontFamily
+        )
+
+        Image(
+            painter = painterResource(R.drawable.brushstrokes),
+            contentDescription = "Brush Stroke",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .width(140.dp)
+                .offset(x = 20.dp, y = (-18).dp)
         )
 
     }
@@ -106,30 +125,33 @@ fun InfoSection(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 30.dp, horizontal = 40.dp),
+            .padding(start = 40.dp, top = 30.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.Start,
     ) {
         Text(
-            text = "Personlige oplysninger"
+            text = "PERSONLIGE OPLYSNINGER",
+            fontWeight = Bold,
+            fontSize = 20.sp,
+            fontFamily = NohemiFontFamily
         )
         items.forEach { item ->
-            InfoStyle(title = item.title, value = item.value)
+            InfoStyle(title = item.title, value = item.value, icon = item.icon)
         }
 
-        SimpleLine()
+
 
     }
+    SimpleLine()
 
 }
-
 
 @Composable
 fun SimpleLine() {
     HorizontalDivider(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 100.dp, vertical = 50.dp),
+            .padding(horizontal = 130.dp, vertical = 30.dp),
 
         thickness = 1.dp,
         color = Color.Black
@@ -141,7 +163,9 @@ fun SimpleLine() {
                 imageVector = Icons.Filled.Favorite,
                 contentDescription = "Favorite"
             )
-            Infobox("hej", "hello")
+
+https://claude.ai/share/cd4ff895-8567-408c-9f59-55b27e1ab9fe
+
      */
 
 
@@ -149,16 +173,39 @@ fun SimpleLine() {
 @Composable
 fun InfoStyle(
     title: String,
-            value: String,
-            modifier: Modifier = Modifier,) {
-    Column(
+    value: String,
+    icon: ImageVector,
+    modifier: Modifier = Modifier,
+    ) {
+    Row(
         modifier = modifier
             .background(Color(0xFFF2F2F2))
-            .padding(2.dp)
+            .padding(7.dp)
+            .width(325.dp)
     ) {
-        Text(text = title, fontWeight = FontWeight.Thin)
-        Text(text = value, fontWeight = FontWeight.Bold)
-    }
+        Column(
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                modifier = Modifier.padding(end = 12.dp)
+            )
+        }
+        Column() {
+            Text(
+                text = title,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.ExtraLight,
+                fontFamily = NohemiFontFamily
+            )
+            Text(
+                text = value,
+                fontFamily = NohemiFontFamily)
+
+        }
+        }
+
+
 }
 
 
@@ -169,13 +216,28 @@ fun ActionButtons(
     modifier: Modifier = Modifier,
     ) {
         Column(
-            modifier = modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = modifier
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             actions.forEach { label ->
-                Button(onClick = { onAction(label) }) {
-                    Text(text = label)
+                Button(
+                    modifier = Modifier
+                        .width(340.dp)
+                        .height(60.dp)
+                        .clip(RoundedCornerShape(16.dp)) ,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFFF2F2F2),
+                        contentColor = Color.Black
+                    ),
+                    onClick = { onAction(label) }
+                ) {
+                    Text(
+                        text = label,
+                        fontFamily = NohemiFontFamily,
+                        fontSize = 15.sp,
+                    )
                 }
             }
         }
