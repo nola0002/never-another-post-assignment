@@ -59,7 +59,11 @@ class MainActivity : ComponentActivity() {
                                         Screen.MyBra -> navController.navigate("mybra-screen")
                                         Screen.Profile -> navController.navigate("profile-screen")
                                     }
-                                }
+                                },
+                                listOfCardSectionText = viewModel.exploreCarrouselOne,
+                                selectedCarrouselText = viewModel.exploreCarrouselOneIndex,
+                                carrouselBackButtonClick = { viewModel.carrouselBackButtonClick() },
+                                carrouselForwardButtonClick = { viewModel.carrouselForwardButtonClick() }
                             )
                         }
 
