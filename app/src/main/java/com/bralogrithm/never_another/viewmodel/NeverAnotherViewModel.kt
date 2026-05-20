@@ -15,6 +15,8 @@ class NeverAnotherViewModel: ViewModel() {
     var exploreCarrouselOneIndex by mutableStateOf(0)
 
 
+    var onGoingFlow by mutableStateOf(false)
+
     var exploreCarrouselOne by mutableStateOf(
         listOf(
             ExploreCardSectionText(
