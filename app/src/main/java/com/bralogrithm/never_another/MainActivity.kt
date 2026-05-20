@@ -11,7 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.bralogrithm.never_another.model.Screen
 import com.bralogrithm.never_another.view.screens.explore.ExploreScreen
 import com.bralogrithm.never_another.view.screens.home.HomeScreen
-import com.bralogrithm.never_another.view.screens.myBra.MyBraScreen
+import com.bralogrithm.never_another.view.screens.order.MyBraScreen
 import com.bralogrithm.never_another.view.screens.profile.ProfileScreen
 import com.bralogrithm.never_another.viewmodel.NeverAnotherViewModel
 
