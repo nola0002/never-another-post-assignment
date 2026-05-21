@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import com.bralogrithm.never_another.R
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -99,21 +100,24 @@ fun ProfileHeader(modifier: Modifier = Modifier) {
                 .clip(CircleShape),
         )
 
-        Text(
-            text = "MIN PROFIL",
-            fontSize = 45.sp,
-            fontWeight = Bold,
-            fontFamily = NohemiFontFamily
-        )
+        Box(
+            contentAlignment = Alignment.TopEnd
+        ){
+            Text(
+                text = "MIN PROFIL",
+                fontSize = 45.sp,
+                fontWeight = Bold,
+                fontFamily = NohemiFontFamily
+            )
 
-        Image(
-            painter = painterResource(R.drawable.brushstrokes),
-            contentDescription = "Brush Stroke",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .width(140.dp)
-                .offset(x = 20.dp, y = (-18).dp)
-        )
+            Image(
+                painter = painterResource(R.drawable.brushstrokes),
+                contentDescription = "Brush Stroke",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .offset(x = 100.dp, y = (-150).dp)
+            )
+        }
 
     }
 }
