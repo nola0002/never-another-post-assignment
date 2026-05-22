@@ -6,16 +6,19 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.bralogrithm.never_another.model.Screen
+import com.bralogrithm.never_another.model.SubScreensProfile
 import com.bralogrithm.never_another.ui.theme.NeverAnotherTheme
 import com.bralogrithm.never_another.view.screens.explore.ExploreScreen
 import com.bralogrithm.never_another.view.screens.home.HomeScreen
 import com.bralogrithm.never_another.view.screens.order.MyBraScreen
 import com.bralogrithm.never_another.view.screens.profile.ProfileScreen
+import com.bralogrithm.never_another.view.screens.profile.subscreens.FaqScreen
 import com.bralogrithm.never_another.viewmodel.NeverAnotherViewModel
 
 class MainActivity : ComponentActivity() {
@@ -98,8 +101,36 @@ class MainActivity : ComponentActivity() {
                                         Screen.MyBra -> navController.navigate("mybra-screen")
                                         Screen.Profile -> navController.navigate("profile-screen")
                                     }
+                                },
+                                onAction = { subScreen ->
+                                    viewModel.selectedSubScreenProfile = subScreen
+                                    when (subScreen) {
+                                        SubScreensProfile.MyInformation -> navController.navigate("myinformation-subscreen")
+                                        SubScreensProfile.AfterCare -> navController.navigate("aftercare-subscreen")
+                                        SubScreensProfile.OrderStatus -> navController.navigate("orderstatus-subscreen")
+                                        SubScreensProfile.FAQ -> navController.navigate("faq-subscreen")
+                                        else -> {navController.popBackStack()}
+                                    }
                                 }
                             )
+                        }
+
+
+                        composable("myinformation-subscreen") {
+                            Text("Myinformation")
+
+                        }
+                        composable("aftercare-subscreen") {
+                            Text("Aftercare")
+
+                        }
+                        composable("orderstatus-subscreen") {
+
+                            Text("Order")
+                        }
+                        composable("faq-subscreen") {
+                            FaqScreen()
+
                         }
                     }
                 }

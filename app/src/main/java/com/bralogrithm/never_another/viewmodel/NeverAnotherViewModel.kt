@@ -6,12 +6,15 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.bralogrithm.never_another.model.ExploreCardSectionText
 import com.bralogrithm.never_another.model.Screen
+import com.bralogrithm.never_another.model.SubScreensProfile
 import com.bralogrithm.never_another.model.TrustPilotCardInfo
 import com.bralogrithm.never_another.view.screens.explore.TrustPilotCard
 
 class NeverAnotherViewModel : ViewModel() {
 
     var selectedScreen by mutableStateOf(Screen.Home)
+
+    var selectedSubScreenProfile by mutableStateOf(SubScreensProfile.MyProfile)
 
 
     var exploreCarrouselOneIndex by mutableStateOf(0)

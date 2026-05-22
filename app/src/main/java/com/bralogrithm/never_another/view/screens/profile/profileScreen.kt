@@ -39,15 +39,21 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import com.bralogrithm.never_another.model.InfoItem
+import com.bralogrithm.never_another.model.Label
+import com.bralogrithm.never_another.model.SubScreensProfile
+import com.bralogrithm.never_another.model.labels
 import com.bralogrithm.never_another.ui.theme.NohemiFontFamily
 
 @Composable
 fun ProfileScreen(
     selectedScreen: Screen,
-    onScreenClick: (Screen) -> Unit
-) {
+    onScreenClick: (Screen) -> Unit,
+    onAction: (SubScreensProfile) -> Unit,
+    ) {
     Scaffold(
         bottomBar = {
             NavigationBarBottom(
@@ -73,11 +79,12 @@ fun ProfileScreen(
                     InfoItem("E-EMAIL", "jensen.carla2500@gmail.com", Icons.Default.MailOutline)
                 ),
             )
-            ActionButtons(
-                actions = listOf("MINE OPLYSNINGER", "EFTER PLEJE", "ORDER STATUS", "FAQ"),
-                onAction = {},
-            )
 
+
+            ActionButtons(
+                labels = labels,
+                onAction = onAction,
+            )
 
         }
     }
@@ -101,12 +108,13 @@ fun ProfileHeader(modifier: Modifier = Modifier) {
         )
 
         Box(
-            contentAlignment = Alignment.TopEnd
+            modifier = Modifier
+                .height(35.dp)
         ){
             Text(
                 text = "MIN PROFIL",
                 fontSize = 45.sp,
-                fontWeight = Bold,
+                fontWeight = Medium,
                 fontFamily = NohemiFontFamily
             )
 
@@ -115,7 +123,9 @@ fun ProfileHeader(modifier: Modifier = Modifier) {
                 contentDescription = "Brush Stroke",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .offset(x = 100.dp, y = (-150).dp)
+                    .size(90.dp)
+                    .offset(x = 180.dp, y = (-30).dp)
+                    .rotate(20f)
             )
         }
 
@@ -215,8 +225,8 @@ fun InfoStyle(
 
 @Composable
 fun ActionButtons(
-    actions: List<String>,
-    onAction: (String) -> Unit,
+    labels: List<Label>,
+    onAction: (SubScreensProfile) -> Unit,
     modifier: Modifier = Modifier,
     ) {
         Column(
@@ -225,7 +235,7 @@ fun ActionButtons(
             verticalArrangement = Arrangement.spacedBy(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            actions.forEach { label ->
+            labels.forEach { label ->
                 Button(
                     modifier = Modifier
                         .width(340.dp)
@@ -235,10 +245,10 @@ fun ActionButtons(
                         containerColor = Color(0xFFF2F2F2),
                         contentColor = Color.Black
                     ),
-                    onClick = { onAction(label) }
+                    onClick = { onAction(label.subScreen) }
                 ) {
                     Text(
-                        text = label,
+                        text = label.labelName,
                         fontFamily = NohemiFontFamily,
                         fontSize = 15.sp,
                     )
