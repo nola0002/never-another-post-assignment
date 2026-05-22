@@ -7,6 +7,9 @@ import androidx.lifecycle.ViewModel
 import com.bralogrithm.never_another.model.BraCarrouselPicture
 import com.bralogrithm.never_another.model.BraColor
 import com.bralogrithm.never_another.model.Screen
+import com.bralogrithm.never_another.model.SubScreensProfile
+import com.bralogrithm.never_another.model.TrustPilotCardInfo
+import com.bralogrithm.never_another.view.screens.explore.TrustPilotCard
 import com.bralogrithm.never_another.model.exploreCarrouselOne
 import com.bralogrithm.never_another.model.picturesForBlackBraCarrousel
 import com.bralogrithm.never_another.model.picturesForWhiteBraCarrousel
@@ -14,6 +17,8 @@ import com.bralogrithm.never_another.model.picturesForWhiteBraCarrousel
 class NeverAnotherViewModel : ViewModel() {
 
     var selectedScreen by mutableStateOf(Screen.Home)
+
+    var selectedSubScreenProfile by mutableStateOf(SubScreensProfile.MyProfile)
 
 
     var exploreCarrouselIndex by mutableStateOf(0)
