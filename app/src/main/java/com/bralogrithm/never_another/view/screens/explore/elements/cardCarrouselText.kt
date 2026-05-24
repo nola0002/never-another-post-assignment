@@ -91,20 +91,20 @@ fun CardCarrouselText(
                             modifier = Modifier
                                 .padding(top = 16.dp),
                             text = listOfCardSectionText[selectedCarrouselText].thickText,
-                            textAlign = TextAlign.Center,
                             fontSize = 24.sp,
                             fontFamily = NohemiFontFamily,
                             fontWeight = FontWeight.ExtraBold,
+                            textAlign = TextAlign.Center,
                             )
 
                         Spacer(modifier = Modifier.height(16.dp))
 
                         Text(
                             text = listOfCardSectionText[selectedCarrouselText].thinText,
-                            textAlign = TextAlign.Center,
                             fontSize = 16.sp,
                             fontFamily = NohemiFontFamily,
                             fontWeight = FontWeight.Normal,
+                            textAlign = TextAlign.Center,
                         )
                     }
 

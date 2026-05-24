@@ -16,14 +16,15 @@ import com.bralogrithm.never_another.model.Screen
 import com.bralogrithm.never_another.model.SubScreensProfile
 import com.bralogrithm.never_another.model.exploreCarrouselOne
 import com.bralogrithm.never_another.model.exploreCarrouselTwo
-import com.bralogrithm.never_another.model.picturesForWhiteBraCarrousel
 import com.bralogrithm.never_another.model.trustPilotCards
 import com.bralogrithm.never_another.ui.theme.NeverAnotherTheme
 import com.bralogrithm.never_another.view.screens.explore.ExploreScreen
 import com.bralogrithm.never_another.view.screens.home.HomeScreen
 import com.bralogrithm.never_another.view.screens.order.MyBraScreen
 import com.bralogrithm.never_another.view.screens.profile.ProfileScreen
+import com.bralogrithm.never_another.view.screens.profile.subscreens.aftercare.AfterCareScreen
 import com.bralogrithm.never_another.view.screens.profile.subscreens.FaqScreen
+import com.bralogrithm.never_another.view.screens.profile.subscreens.orderstatus.OrderStatusScreen
 import com.bralogrithm.never_another.viewmodel.NeverAnotherViewModel
 
 class MainActivity : ComponentActivity() {
@@ -70,8 +71,8 @@ class MainActivity : ComponentActivity() {
                                 },
                                 listOfCardCarrouselPictures = viewModel.selectedCarouselPictures,
                                 selectedColor = viewModel.selectedColor,
-                                onClickWhite = { viewModel.selectColor(BraColor.WHITE) },
-                                onClickBlack = { viewModel.selectColor(BraColor.BLACK) },
+                                onClickWhite = { viewModel.selectColor(BraColor.White) },
+                                onClickBlack = { viewModel.selectColor(BraColor.Black) },
                                 listOfCardSectionTextOne = exploreCarrouselOne,
                                 selectedCarrousel = viewModel.exploreCarrouselIndex,
                                 carrouselBackButtonClick = { viewModel.carrouselBackButtonClick() },
@@ -131,12 +132,10 @@ class MainActivity : ComponentActivity() {
 
                         }
                         composable("aftercare-subscreen") {
-                            Text("Aftercare")
-
+                            AfterCareScreen()
                         }
                         composable("orderstatus-subscreen") {
-
-                            Text("Order")
+                            OrderStatusScreen()
                         }
                         composable("faq-subscreen") {
                             FaqScreen()

@@ -4,12 +4,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.bralogrithm.never_another.model.BraCarrouselPicture
 import com.bralogrithm.never_another.model.BraColor
 import com.bralogrithm.never_another.model.Screen
 import com.bralogrithm.never_another.model.SubScreensProfile
-import com.bralogrithm.never_another.model.TrustPilotCardInfo
-import com.bralogrithm.never_another.view.screens.explore.TrustPilotCard
 import com.bralogrithm.never_another.model.exploreCarrouselOne
 import com.bralogrithm.never_another.model.picturesForBlackBraCarrousel
 import com.bralogrithm.never_another.model.picturesForWhiteBraCarrousel
@@ -22,15 +19,15 @@ class NeverAnotherViewModel : ViewModel() {
 
 
     var exploreCarrouselIndex by mutableStateOf(0)
-    var selectedColor by mutableStateOf(BraColor.WHITE)
+    var selectedColor by mutableStateOf(BraColor.White)
 
 
     var selectedCarouselPictures by mutableStateOf(picturesForWhiteBraCarrousel)
     fun selectColor(color: BraColor) {
         selectedColor = color
         selectedCarouselPictures = when (color) {
-            BraColor.WHITE -> picturesForWhiteBraCarrousel
-            BraColor.BLACK -> picturesForBlackBraCarrousel
+            BraColor.White -> picturesForWhiteBraCarrousel
+            BraColor.Black -> picturesForBlackBraCarrousel
         }
     }
 
