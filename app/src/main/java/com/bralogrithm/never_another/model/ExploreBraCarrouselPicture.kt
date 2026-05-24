@@ -6,7 +6,7 @@ data class BraCarrouselPicture(
     val pictureId: Int
 )
 
-enum class BraColor { WHITE, BLACK }
+enum class BraColor { White, Black }
 
 
 val picturesForWhiteBraCarrousel = listOf(
