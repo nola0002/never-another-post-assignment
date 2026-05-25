@@ -40,7 +40,6 @@ import com.bralogrithm.never_another.view.screens.profile.InfoStyle
 
 @Composable
 fun FaqScreen(
-
               onBackClick: () -> Unit
 ) {
     Scaffold(
@@ -96,13 +95,12 @@ fun Arrow(onBackClick: () -> Unit){
     ) {
         Icon(
             imageVector = Icons.Filled.ArrowBack,
-            contentDescription = "Gå tilbage",
+            contentDescription = "Back pointing arrow",
             Modifier
                 .size(40.dp),
             tint = Color.Black
 
         )
-
     }
 }
 
