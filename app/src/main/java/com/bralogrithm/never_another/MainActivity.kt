@@ -135,15 +135,21 @@ class MainActivity : ComponentActivity() {
                             AfterCareScreen()
                         }
                         composable("orderstatus-subscreen") {
-                            OrderStatusScreen()
+                            OrderStatusScreen(
+                                onClickGoToAfterCare = {}
+                            )
                         }
                         composable("faq-subscreen") {
-                            FaqScreen()
+                            FaqScreen(
+                                onBackClick = { navController.popBackStack() }
+                            )
 
                         }
                     }
                 }
+
             }
+
         }
     }
 }

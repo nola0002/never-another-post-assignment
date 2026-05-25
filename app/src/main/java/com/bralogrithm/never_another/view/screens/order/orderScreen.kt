@@ -1,6 +1,8 @@
 package com.bralogrithm.never_another.view.screens.order
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -12,6 +14,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
 import com.bralogrithm.never_another.model.Screen
 import com.bralogrithm.never_another.view.components.NavigationBarBottom
 import com.bralogrithm.never_another.view.screens.order.subscreens.videoguides.TextFlowScreens
@@ -41,7 +45,12 @@ fun MyBraScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(innerPadding)
+                        .padding(
+                            start = innerPadding.calculateStartPadding(LayoutDirection.Ltr),
+                            top = innerPadding.calculateTopPadding(),
+                            end = innerPadding.calculateEndPadding(LayoutDirection.Ltr),
+                            bottom = 0.dp
+                        )
                 ) {
 
                     TextButton(
