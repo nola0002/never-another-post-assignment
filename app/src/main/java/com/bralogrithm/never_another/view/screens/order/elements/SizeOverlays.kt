@@ -1,5 +1,6 @@
 package com.bralogrithm.never_another.view.screens.order.elements
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -24,8 +25,13 @@ fun Overlay(
 ) {
     ContinueButton(onClick = onContinue)
 
-    Text(
-        color = Color.White,
-        text = convertStepToHeader(step.toString())
-    )
+    Column() {
+        Text(
+            color = Color.White,
+            text = convertStepToHeader(step.toString())
+        )
+
+    }
+
+
 }
