@@ -15,8 +15,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -77,23 +81,41 @@ fun ProgessBar(
             Button(
                 onClick = onBackClick,
                 modifier = Modifier
-                    .size(40.dp),
+                    .size(60.dp),
                 shape = CircleShape,
                 contentPadding = PaddingValues(0.dp),
-                colors = ButtonDefaults.buttonColors(Color.Gray)
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFF2F2F2),
+                    contentColor = Color.Black
+                )
             ) {
-                Text("<")
+                Icon(
+                    imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = "Gå tilbage",
+                    Modifier
+                        .size(40.dp),
+                    tint = Color.Black
+                )
             }
 
             Button(
                 onClick = onClose,
                 modifier = Modifier
-                    .size(40.dp),
+                    .size(60.dp),
                 shape = CircleShape,
                 contentPadding = PaddingValues(0.dp),
-                colors = ButtonDefaults.buttonColors(Color.Gray)
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFF2F2F2),
+                    contentColor = Color.Black
+                )
             ) {
-                Text("X")
+                Icon(
+                    imageVector = Icons.Filled.Close,
+                    contentDescription = "LUk",
+                    Modifier
+                        .size(40.dp),
+                    tint = Color.Black
+                )
             }
         }
 
