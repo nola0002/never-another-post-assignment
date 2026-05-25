@@ -5,6 +5,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import com.bralogrithm.never_another.model.Flow
 
+fun convertStepToHeader(
+    step: String
+): String {
+    return when (step) {
+        "UpperSize" -> "Øvre bryst mål"
+        "UnderSize" -> "Nedre bryst mål"
+        "BreastSize" -> "Bryst Spænd"
+        "BreastHeight" -> "Bryst Højde"
+        else -> "Fejl"
+    }
+}
 @Composable
 fun Overlay(
     onContinue: () -> Unit,
@@ -12,8 +23,9 @@ fun Overlay(
     type: String
 ) {
     ContinueButton(onClick = onContinue)
+
     Text(
         color = Color.White,
-        text = "${type} : ${step}"
+        text = convertStepToHeader(step.toString())
     )
 }
