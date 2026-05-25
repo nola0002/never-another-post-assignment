@@ -42,7 +42,7 @@ fun HomeScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            Marquee(
+            Banner(
                 modifier = Modifier
                     .background(Black)
                     .padding(vertical = 8.dp)
@@ -55,7 +55,7 @@ fun HomeScreen(
 }
 
 @Composable
-fun Marquee(modifier: Modifier = Modifier) {
+fun Banner(modifier: Modifier = Modifier) {
     Text(
         text = "Bestil i dag og få fri fragt".uppercase(),
         modifier = modifier
@@ -70,19 +70,19 @@ fun Marquee(modifier: Modifier = Modifier) {
 @Composable
 fun ImageArea() {
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.height(590.dp)
     ) {
         Image(
             painter = painterResource(id = R.drawable.landing_page_image),
             contentDescription = "Background",
-            modifier = Modifier.height(590.dp),
+            modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
         )
 
         Row(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 40.dp)
+                .padding(bottom = 20.dp)
         ) {
             Text(
                 text = "Digitalt ".uppercase(),
