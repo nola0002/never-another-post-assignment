@@ -1,16 +1,11 @@
 package com.bralogrithm.never_another.view.screens.order.elements
 
-import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.text.input.InputTransformation
-import androidx.compose.foundation.text.input.byValue
-import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -20,9 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.bralogrithm.never_another.model.Flow
-import java.nio.file.WatchEvent
 
 fun convertStepToHeader(
     step: String
@@ -39,7 +32,9 @@ fun convertStepToHeader(
 fun Overlay(
     onContinue: () -> Unit,
     step: Flow,
-    type: String
+    type: String,
+    value: String,
+    onValueChange: (String) -> Unit
 ) {
     ContinueButton(onClick = onContinue)
 
@@ -57,7 +52,8 @@ fun Overlay(
             .height(10.dp))
 
         TextField(
-            state = rememberTextFieldState(initialText = "0"),
+            value = value,
+            onValueChange = onValueChange,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number
             ),
