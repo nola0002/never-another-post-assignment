@@ -4,11 +4,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
@@ -16,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -35,7 +40,10 @@ import com.bralogrithm.never_another.view.screens.explore.elements.CardCarrousel
 import com.bralogrithm.never_another.view.screens.explore.elements.CardCarrouselText
 import com.bralogrithm.never_another.view.screens.explore.elements.ColorDotCarrousel
 import com.bralogrithm.never_another.view.screens.explore.elements.DeliveryTimeTexts
+import com.bralogrithm.never_another.view.components.TextWithBrushStroke
 import com.bralogrithm.never_another.view.screens.explore.elements.TrustPilotCard
+import com.bralogrithm.never_another.view.components.BottomLogo
+import com.bralogrithm.never_another.view.screens.explore.elements.CardCarrouselPictureAndSelector
 
 @Composable
 fun ExploreScreen(
@@ -72,82 +80,54 @@ fun ExploreScreen(
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("This is the Explore Screen")
-
-
-
-
-
-            Image(
-                painter = painterResource(R.drawable.headerexplore),
-                contentDescription = "Text that says Made for you. Only for you.",
-                modifier = Modifier.fillMaxWidth(),
-                contentScale = ContentScale.FillWidth
+            Spacer(
+                modifier = Modifier
+                    .height(40.dp)
             )
 
-
-            Column(
+            TextWithBrushStroke(
+                text = "Skabt til dig.\n" +
+                        "Kun til dig.",
+                fontSize = 52,
+                fontWeight = FontWeight.Normal,
+                boxHeight = 150,
+                boxPaddingStart = 44,
                 modifier = Modifier
-                    .fillMaxWidth(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                CardCarrouselPicture(
-                    listOfCardCarrouselPictures = listOfCardCarrouselPictures,
-                    selectedCarrouselPicture = selectedCarrousel,
-                    carrouselBackButtonClick = carrouselBackButtonClick,
-                    carrouselForwardButtonClick = carrouselForwardButtonClick
-                )
+                    .size(94.dp)
+                    .offset(x = 208.dp, y = (54).dp)
+                    .rotate(146f)
+            )
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 50.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Column() {
-                        Text(
-                            text = "Farve: Hvid",
-                            fontFamily = NohemiFontFamily,
-                            fontWeight = FontWeight.Normal,
-                            fontSize = 12.sp
-                        )
+            Spacer(
+                modifier = Modifier
+                    .height(30.dp)
+            )
 
-                        Text(
-                            text = "Bra no. 1",
-                            fontFamily = NohemiFontFamily,
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 24.sp
-                        )
-                    }
+            CardCarrouselPictureAndSelector(
+                listOfCardCarrouselPictures = listOfCardCarrouselPictures,
+                selectedCarrousel = selectedCarrousel,
+                carrouselBackButtonClick = carrouselBackButtonClick,
+                carrouselForwardButtonClick = carrouselForwardButtonClick,
+                selectedColor = selectedColor,
+                onClickWhite = onClickWhite,
+                onClickBlack = onClickBlack
+            )
 
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(10.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-
-
-                        ColorDotCarrousel(
-                            color = Color(0xffF2F1ED),
-                            selected = selectedColor == BraColor.White,
-                            onClick = onClickWhite
-                        )
-                        ColorDotCarrousel(
-                            color = Color(0xff2A2A2C),
-                            selected = selectedColor == BraColor.Black,
-                            onClick = onClickBlack
-                        )
-
-                    }
-                }
-            }
+            Spacer(
+                modifier = Modifier
+                    .height(40.dp)
+            )
 
             Image(
                 painter = painterResource(R.drawable.knittedinonepieceexplore),
                 contentDescription = "NeverAnother Branding and a picture with 3D knitted in one piece",
                 modifier = Modifier.fillMaxWidth(),
                 contentScale = ContentScale.FillWidth
+            )
+
+            Spacer(
+                modifier = Modifier
+                    .height(50.dp)
             )
 
             CardCarrouselText(
@@ -158,6 +138,43 @@ fun ExploreScreen(
 
             )
 
+            Spacer(
+                modifier = Modifier
+                    .height(50.dp)
+            )
+
+            TextWithBrushStroke(
+                text = "Stol på hinanden.",
+                fontSize = 40,
+                fontWeight = FontWeight.Normal,
+                boxHeight = 40,
+                boxPaddingStart = 44,
+                modifier = Modifier
+                    .size(94.dp)
+                    .offset(x = (-36).dp, y = (-30).dp)
+                    .rotate(2f)
+            )
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 44.dp),
+                horizontalArrangement = Arrangement.Start
+            ) {
+                Text(
+                    text = "Trustpilot.com",
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Light,
+                    fontFamily = NohemiFontFamily
+                )
+            }
+
+            Spacer(
+                modifier = Modifier
+                    .height(14.dp)
+            )
+
+
             trustPilotCards.forEach { trustPilotCard ->
                 TrustPilotCard(
                     name = trustPilotCard.name,
@@ -166,11 +183,53 @@ fun ExploreScreen(
                 )
             }
 
+            Spacer(
+                modifier = Modifier
+                    .height(30.dp)
+            )
+
             Image(
                 painter = painterResource(R.drawable.womansowingmachine),
                 contentDescription = "Woman at the sowing machine, that is used to make the NeverAnother bra",
                 modifier = Modifier.fillMaxWidth(),
                 contentScale = ContentScale.FillWidth
+            )
+
+            Spacer(
+                modifier = Modifier
+                    .height(40.dp)
+            )
+
+            TextWithBrushStroke(
+                text = "Strikket.\n" +
+                        "Ikke syet.",
+                fontSize = 40,
+                fontWeight = FontWeight.Normal,
+                boxHeight = 80,
+                boxPaddingStart = 44,
+                modifier = Modifier
+                    .size(88.dp)
+                    .offset(x = (140).dp, y = (-10).dp)
+                    .rotate(72f)
+            )
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 44.dp, top = 4.dp),
+                horizontalArrangement = Arrangement.Start
+            ) {
+                Text(
+                    text = "Derfor føles det anderledes",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Light,
+                    fontFamily = NohemiFontFamily
+                )
+            }
+
+            Spacer(
+                modifier = Modifier
+                    .height(16.dp)
             )
 
             CardCarrouselText(
@@ -180,6 +239,11 @@ fun ExploreScreen(
                 carrouselForwardButtonClick = carrouselForwardButtonClick
             )
 
+            Spacer(
+                modifier = Modifier
+                    .height(50.dp)
+            )
+
             Image(
                 painter = painterResource(R.drawable.breakthemoldpic),
                 contentDescription = "Picture of a model in the NeverAnother Bra with the Break the mold written over it",
@@ -187,8 +251,26 @@ fun ExploreScreen(
                 contentScale = ContentScale.FillWidth
             )
 
+            Spacer(
+                modifier = Modifier
+                    .height(50.dp)
+            )
+
             DeliveryTimeTexts()
 
+
+            Spacer(
+                modifier = Modifier
+                    .height(40.dp)
+            )
+
+            BottomLogo()
+
+
+            Spacer(
+                modifier = Modifier
+                    .height(120.dp)
+            )
         }
     }
 }

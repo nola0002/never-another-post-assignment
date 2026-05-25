@@ -1,0 +1,65 @@
+package com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MailOutline
+import androidx.compose.material.icons.outlined.ContentPaste
+import androidx.compose.material.icons.outlined.Inventory2
+import androidx.compose.material.icons.outlined.Sell
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import com.bralogrithm.never_another.model.InfoItem
+import com.bralogrithm.never_another.model.MeasurementItem
+import com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation.elements.InformationHeader
+import com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation.elements.PersonalSection
+import com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation.elements.YourMeasurement
+
+@Composable
+fun InformationScreen (
+    onBackClick: () -> Unit
+) {
+    Scaffold(
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .background(Color.White),
+            horizontalAlignment = Alignment.CenterHorizontally,
+
+        ) {
+            InformationHeader(onBackClick = onBackClick)
+
+            PersonalSection(
+                items = listOf(
+                    InfoItem("FULDE NAVN", "Henriette Jensen Andersen", Icons.Outlined.Sell),
+                    InfoItem("ADRESSE", "Københavnervej 3, 2500 Valby", Icons.Outlined.Inventory2),
+                    InfoItem("E-EMAIL", "jensen.carla2500@gmail.com", Icons.Default.MailOutline)
+                ),
+            )
+
+            YourMeasurement(
+                measurement = listOf(
+                    MeasurementItem("ØVRE BRYST MÅL", "110 cm", Icons.Outlined.ContentPaste),
+                    MeasurementItem("NEDRE BRYST MÅL", "70 cm", Icons.Outlined.ContentPaste),
+                    MeasurementItem("BRYST SPÆND", "15 cm", Icons.Outlined.ContentPaste),
+                    MeasurementItem("BRYST HØJDE", "20 cm", Icons.Outlined.ContentPaste)
+
+                )
+            )
+
+        }
+    }
+}
+
+
+
+
+
+
