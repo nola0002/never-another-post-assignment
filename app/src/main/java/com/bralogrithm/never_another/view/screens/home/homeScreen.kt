@@ -1,11 +1,8 @@
 package com.bralogrithm.never_another.view.screens.home
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -14,8 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -44,7 +41,7 @@ fun HomeScreen(
             )
         }
     ) { innerPadding ->
-        LazyColumn(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(
@@ -56,38 +53,35 @@ fun HomeScreen(
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            item {
-                Banner()
-                ImageArea()
-            }
-            item {
-                Spacer(Modifier.height(40.dp))
-                CardCarrouselText(
-                    listOfCardSectionText = exploreCarrouselOne,
-                    selectedCarrouselText = viewModel.exploreCarrouselIndex,
-                    carrouselBackButtonClick = { viewModel.carrouselBackButtonClick() },
-                    carrouselForwardButtonClick = { viewModel.carrouselForwardButtonClick() }
+            Banner()
+            ImageArea()
+
+            Spacer(Modifier.height(40.dp))
+            CardCarrouselText(
+                listOfCardSectionText = exploreCarrouselOne,
+                selectedCarrouselText = viewModel.exploreCarrouselIndex,
+                carrouselBackButtonClick = { viewModel.carrouselBackButtonClick() },
+                carrouselForwardButtonClick = { viewModel.carrouselForwardButtonClick() }
+            )
+
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 24.dp),
+                text = "til alle størrelser".uppercase(),
+                style = TextStyle(
+                    fontSize = 36.sp,
+                    lineHeight = 54.sp,
+                    fontFamily = NohemiFontFamily,
+                    fontWeight = FontWeight(500),
+                    color = Color.Black,
+                    textAlign = TextAlign.Center,
                 )
-            }
-            item {
-                Text(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 24.dp),
-                    text = "til alle størrelser".uppercase(),
-                    style = TextStyle(
-                        fontSize = 36.sp,
-                        lineHeight = 54.sp,
-                        fontFamily = NohemiFontFamily,
-                        fontWeight = FontWeight(500),
-                        color = Color.Black,
-                        textAlign = TextAlign.Center,
-                    )
-                )
-            }
-            item { DescriptiveGrid() }
-            item { TwoByTwoGrid() }
-            item { BottomLogo() }
+            )
+
+            DescriptiveGrid()
+            TwoByTwoGrid()
+            BottomLogo()
         }
     }
 }
