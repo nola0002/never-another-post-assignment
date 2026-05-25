@@ -7,3 +7,9 @@ data class InfoItem(
     val value: String,
     val icon: ImageVector
 )
+
+data class MeasurementItem(
+    val title: String,
+    val value: String,
+    val icon: ImageVector
+)

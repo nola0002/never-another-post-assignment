@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -23,7 +22,8 @@ import com.bralogrithm.never_another.view.screens.home.HomeScreen
 import com.bralogrithm.never_another.view.screens.order.MyBraScreen
 import com.bralogrithm.never_another.view.screens.profile.ProfileScreen
 import com.bralogrithm.never_another.view.screens.profile.subscreens.aftercare.AfterCareScreen
-import com.bralogrithm.never_another.view.screens.profile.subscreens.FaqScreen
+import com.bralogrithm.never_another.view.screens.profile.subscreens.faq.FaqScreen
+import com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation.InformationScreen
 import com.bralogrithm.never_another.view.screens.profile.subscreens.orderstatus.OrderStatusScreen
 import com.bralogrithm.never_another.viewmodel.NeverAnotherViewModel
 
@@ -130,8 +130,9 @@ class MainActivity : ComponentActivity() {
 
 
                         composable("myinformation-subscreen") {
-                            Text("Myinformation")
-
+                            InformationScreen(
+                                onBackClick = { navController.popBackStack() }
+                            )
                         }
                         composable("aftercare-subscreen") {
                             AfterCareScreen()
