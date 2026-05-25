@@ -64,11 +64,30 @@ fun HomeScreen(
             Spacer(Modifier.height(40.dp))
 
 
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 24.dp),
+                text = "Bra no. 1",
+                style = TextStyle(
+                    fontSize = 32.sp,
+                    fontFamily = NohemiFontFamily,
+                    fontWeight = FontWeight(500),
+                    color = Color.Black,
+                    textAlign = TextAlign.Start,
+                )
+            )
 
             HomeSelectBra(
                 selectedColor = selectedColor,
                 onToggleColor = onToggleColor
             )
+
+            Spacer(Modifier.height(40.dp))
+
+            DescriptiveGrid()
+
+            Spacer(Modifier.height(40.dp))
 
             Text(
                 modifier = Modifier
@@ -85,9 +104,13 @@ fun HomeScreen(
                 )
             )
 
-            DescriptiveGrid()
             TwoByTwoGrid()
+
+            Spacer(Modifier.height(40.dp))
+
             BottomLogo()
+
+            Spacer(Modifier.height(80.dp))
         }
     }
 }
