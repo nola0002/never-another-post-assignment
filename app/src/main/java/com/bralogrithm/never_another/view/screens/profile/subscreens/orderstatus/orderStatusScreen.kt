@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -28,25 +30,37 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bralogrithm.never_another.R
-import com.bralogrithm.never_another.model.steps
 import com.bralogrithm.never_another.ui.theme.NohemiFontFamily
+import com.bralogrithm.never_another.view.screens.profile.subscreens.components.BackArrow
 
 @Composable
 fun OrderStatusScreen(
+    onBackClick: () -> Unit,
     onClickGoToAfterCare: () -> Unit
 ) {
     Scaffold(
         bottomBar = {
 
+        },
+        topBar = {
+            BackArrow(
+                onBackClick = onBackClick
+            )
         }
     ) { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
+                .padding(
+                    start = innerPadding.calculateStartPadding(LayoutDirection.Ltr), //
+                    top = 0.dp,
+                    end = innerPadding.calculateEndPadding(LayoutDirection.Ltr),
+                    bottom = innerPadding.calculateBottomPadding()
+                )
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -58,7 +72,7 @@ fun OrderStatusScreen(
                 fontSize = 40.sp,
                 modifier = Modifier
                     .offset(40.dp)
-                    .padding(top = 20.dp)
+                    .padding(top = 54.dp)
             )
 
             Box(

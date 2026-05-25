@@ -1,4 +1,4 @@
-package com.bralogrithm.never_another.view.screens.home.elements
+package com.bralogrithm.never_another.view.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box

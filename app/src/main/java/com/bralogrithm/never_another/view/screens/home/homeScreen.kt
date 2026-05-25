@@ -3,7 +3,6 @@ package com.bralogrithm.never_another.view.screens.home
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,17 +15,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.bralogrithm.never_another.model.BraCarrouselPicture
 import com.bralogrithm.never_another.model.BraColor
 import com.bralogrithm.never_another.model.Screen
-import com.bralogrithm.never_another.model.exploreCarrouselOne
 import com.bralogrithm.never_another.ui.theme.*
+import com.bralogrithm.never_another.view.components.BottomLogo
 import com.bralogrithm.never_another.view.components.NavigationBarBottom
-import com.bralogrithm.never_another.view.screens.explore.elements.CardCarrouselPicture
-import com.bralogrithm.never_another.view.screens.explore.elements.CardCarrouselText
 import com.bralogrithm.never_another.view.screens.home.elements.*
-import com.bralogrithm.never_another.viewmodel.NeverAnotherViewModel
 
 @Composable
 fun HomeScreen(

@@ -6,9 +6,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -18,28 +21,44 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bralogrithm.never_another.R
 import com.bralogrithm.never_another.ui.theme.NohemiFontFamily
+import com.bralogrithm.never_another.view.components.TextWithBrushStroke
 import com.bralogrithm.never_another.view.screens.profile.subscreens.aftercare.elements.AfterCareStepBoxes
+import com.bralogrithm.never_another.view.screens.profile.subscreens.components.BackArrow
 
 @Composable
-fun AfterCareScreen() {
+fun AfterCareScreen(
+    onBackClick: () -> Unit
+) {
 
     Scaffold(
         bottomBar = {
 
+        },
+        topBar = {
+            BackArrow(
+                onBackClick = onBackClick
+            )
         }
     ) { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
+                .padding(
+                    start = innerPadding.calculateStartPadding(LayoutDirection.Ltr), //
+                    top = 0.dp,
+                    end = innerPadding.calculateEndPadding(LayoutDirection.Ltr),
+                    bottom = innerPadding.calculateBottomPadding()
+                )
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -55,6 +74,10 @@ fun AfterCareScreen() {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    Spacer(
+                        modifier = Modifier.height(40.dp)
+                    )
+
                     Text(
                         text = "Pleje af BH",
                         fontFamily = NohemiFontFamily,
@@ -69,11 +92,17 @@ fun AfterCareScreen() {
                             .size(300.dp)
                     )
 
-                    Text(
+
+                    TextWithBrushStroke(
                         text = "DIN BH",
-                        fontFamily = NohemiFontFamily,
+                        fontSize = 30,
                         fontWeight = FontWeight.Medium,
-                        fontSize = 30.sp
+                        boxHeight = 80,
+                        boxPaddingStart = 159,
+                        modifier = Modifier
+                            .size(52.dp)
+                            .offset(x = (-30).dp, y = (4).dp)
+                            .rotate(221f)
                     )
 
 
