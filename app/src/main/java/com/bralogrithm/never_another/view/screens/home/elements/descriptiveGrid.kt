@@ -24,7 +24,7 @@ fun DescriptiveGrid(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .border(1.dp, Color.Black)
+            .border(1.dp, Color.Gray,)
     ) {
         Row(modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
             DescriptiveItem(
@@ -32,21 +32,21 @@ fun DescriptiveGrid(modifier: Modifier = Modifier) {
                 icon = { Icon(Icons.Default.Fingerprint, null, Modifier.size(48.dp)) },
                 subtitle = "Skabt kun til din krop"
             )
-            VerticalDivider(color = Color.Black, thickness = 1.dp)
+            VerticalDivider(color = Color.Gray, thickness = 1.dp)
             DescriptiveItem(
                 modifier = Modifier.weight(1f),
                 icon = { Icon(Icons.Default.LocalShipping, null, Modifier.size(48.dp)) },
                 subtitle = "Fragt er altid inkluderet"
             )
         }
-        HorizontalDivider(color = Color.Black, thickness = 1.dp)
+        HorizontalDivider(color = Color.Gray, thickness = 1.dp)
         Row(modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
             DescriptiveItem(
                 modifier = Modifier.weight(1f),
                 icon = { Icon(Icons.Default.ContentCut, null, Modifier.size(48.dp)) },
                 subtitle = "Digitalt skrædderi"
             )
-            VerticalDivider(color = Color.Black, thickness = 1.dp)
+            VerticalDivider(color = Color.Gray, thickness = 1.dp)
             DescriptiveItem(
                 modifier = Modifier.weight(1f),
                 icon = { Icon(Icons.Default.Autorenew, null, Modifier.size(48.dp)) },
@@ -80,13 +80,13 @@ fun DescriptiveItem(
             )
         }
         icon?.invoke()
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         Text(
             text = subtitle,
             style = TextStyle(
                 fontSize = 18.sp,
                 fontFamily = NohemiFontFamily,
-                fontWeight = FontWeight.Medium,
+                fontWeight = FontWeight.Light,
                 textAlign = TextAlign.Center
             )
         )

@@ -52,7 +52,9 @@ class MainActivity : ComponentActivity() {
                                         Screen.MyBra -> navController.navigate("mybra-screen")
                                         Screen.Profile -> navController.navigate("profile-screen")
                                     }
-                                }
+                                },
+                                selectedColor = viewModel.selectedColor,
+                                onToggleColor = { viewModel.toggleHomeBraColor() }
                             )
                         }
 

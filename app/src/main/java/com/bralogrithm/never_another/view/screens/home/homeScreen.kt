@@ -3,6 +3,7 @@ package com.bralogrithm.never_another.view.screens.home
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.CardColors
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,10 +17,13 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.bralogrithm.never_another.model.BraCarrouselPicture
+import com.bralogrithm.never_another.model.BraColor
 import com.bralogrithm.never_another.model.Screen
 import com.bralogrithm.never_another.model.exploreCarrouselOne
 import com.bralogrithm.never_another.ui.theme.*
 import com.bralogrithm.never_another.view.components.NavigationBarBottom
+import com.bralogrithm.never_another.view.screens.explore.elements.CardCarrouselPicture
 import com.bralogrithm.never_another.view.screens.explore.elements.CardCarrouselText
 import com.bralogrithm.never_another.view.screens.home.elements.*
 import com.bralogrithm.never_another.viewmodel.NeverAnotherViewModel
@@ -28,9 +32,10 @@ import com.bralogrithm.never_another.viewmodel.NeverAnotherViewModel
 fun HomeScreen(
     selectedScreen: Screen,
     onScreenClick: (Screen) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    val viewModel = viewModel<NeverAnotherViewModel>()
+    modifier: Modifier = Modifier,
+    selectedColor: BraColor,
+    onToggleColor: () -> Unit,
+    ) {
 
     Scaffold(
         modifier = modifier,
@@ -57,12 +62,32 @@ fun HomeScreen(
             ImageArea()
 
             Spacer(Modifier.height(40.dp))
-            CardCarrouselText(
-                listOfCardSectionText = exploreCarrouselOne,
-                selectedCarrouselText = viewModel.exploreCarrouselIndex,
-                carrouselBackButtonClick = { viewModel.carrouselBackButtonClick() },
-                carrouselForwardButtonClick = { viewModel.carrouselForwardButtonClick() }
+
+
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 24.dp),
+                text = "Bra no. 1",
+                style = TextStyle(
+                    fontSize = 32.sp,
+                    fontFamily = NohemiFontFamily,
+                    fontWeight = FontWeight(500),
+                    color = Color.Black,
+                    textAlign = TextAlign.Start,
+                )
             )
+
+            HomeSelectBra(
+                selectedColor = selectedColor,
+                onToggleColor = onToggleColor
+            )
+
+            Spacer(Modifier.height(40.dp))
+
+            DescriptiveGrid()
+
+            Spacer(Modifier.height(40.dp))
 
             Text(
                 modifier = Modifier
@@ -79,9 +104,13 @@ fun HomeScreen(
                 )
             )
 
-            DescriptiveGrid()
             TwoByTwoGrid()
+
+            Spacer(Modifier.height(40.dp))
+
             BottomLogo()
+
+            Spacer(Modifier.height(80.dp))
         }
     }
 }
