@@ -30,7 +30,7 @@ fun ContinueButton(
                 .fillMaxWidth()
                 .height(60.dp),
             colors = ButtonDefaults.buttonColors(
-                Color.White
+                Color(0xFFF2F2F2)
             ),
             shape = RoundedCornerShape(50)
 
