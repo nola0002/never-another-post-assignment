@@ -97,7 +97,8 @@ class MainActivity : ComponentActivity() {
                                         Screen.MyBra -> navController.navigate("mybra-screen")
                                         Screen.Profile -> navController.navigate("profile-screen")
                                     }
-                                }
+                                },
+                                onGoToOrderStatus = { navController.navigate("orderstatus-subscreen") }
                             )
                         }
 
