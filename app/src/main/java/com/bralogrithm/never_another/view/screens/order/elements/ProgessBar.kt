@@ -30,11 +30,11 @@ import androidx.compose.ui.unit.dp
 fun ProgessBar(
     pageCount: Int,
     currentPage: Int,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    onClose: () -> Unit
 ) {
 
     Column() {
-
 
         Row(modifier = Modifier
             .fillMaxWidth()
@@ -43,6 +43,7 @@ fun ProgessBar(
             .padding(top = 30.dp, bottom = 15.dp),
             horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
+
             repeat(pageCount) { index ->
 
                 val targetPage = when {
@@ -70,7 +71,8 @@ fun ProgessBar(
         Row(modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 20.dp)
-            .padding(top = 10.dp)
+            .padding(top = 10.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Button(
                 onClick = onBackClick,
@@ -81,6 +83,17 @@ fun ProgessBar(
                 colors = ButtonDefaults.buttonColors(Color.Gray)
             ) {
                 Text("<")
+            }
+
+            Button(
+                onClick = onClose,
+                modifier = Modifier
+                    .size(40.dp),
+                shape = CircleShape,
+                contentPadding = PaddingValues(0.dp),
+                colors = ButtonDefaults.buttonColors(Color.Gray)
+            ) {
+                Text("X")
             }
         }
 

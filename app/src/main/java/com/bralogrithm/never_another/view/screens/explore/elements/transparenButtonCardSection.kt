@@ -1,6 +1,5 @@
-package com.bralogrithm.never_another.view.screens.explore
+package com.bralogrithm.never_another.view.screens.explore.elements
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -14,12 +13,13 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun TransparentButtonCardSection(
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ){
     Button(colors = ButtonDefaults.buttonColors(
         containerColor = Color.Transparent
     ),
-        modifier = Modifier
+        modifier = modifier
             .width(34.dp)
             .height(160.dp),
         contentPadding = PaddingValues(0.dp), // fjerner default padding i Button

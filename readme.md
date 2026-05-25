@@ -1,5 +1,5 @@
 # Never Another - Eksamensprojekt
-### Bralogithm - Johanne, Kai, Noah og Sylvester
+### Bralgorithm - Johanne, Kai, Noah og Sylvester
 
 ---
 
