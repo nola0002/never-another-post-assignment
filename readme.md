@@ -22,17 +22,33 @@ Projektet anvender **MVVM (Model-View-ViewModel)** for at opdele ansvar:
 ```plaintext
 never-another/
 ├── MainActivity.kt
-│   └── View: main
 │
 ├── model/
-│   └── 
+│   ├── Screen.kt
+│   ├── Question.kt / questionlist.kt
+│   ├── InfoItem.kt
+│   ├── TimeLine.kt
+│   ├── labels.kt
+│   ├── TrustPilotCardInfo.kt
+│   ├── ExploreCardSectionText.kt
+│   └── ExploreBraCarrouselPicture.kt
 │
 ├── viewmodel/
-│   └── 
+│   ├── NeverAnotherViewModel.kt
+│   └── FlowViewModel.kt
+│
+├── view/
+│   ├── screens/
+│   │   ├── home/
+│   │   ├── explore/
+│   │   ├── order/
+│   │   └── profile/
+│   │
+│   └── components/
+│       ├── navigationBar.kt
+│       └── navigationBarElement.kt
 │
 └── ui/
-    ├── screens/
-    │   ├── 
-    │
-    └── components/
-        └── 
+    └── theme/
+        └── AppTheme.kt
+``` 
