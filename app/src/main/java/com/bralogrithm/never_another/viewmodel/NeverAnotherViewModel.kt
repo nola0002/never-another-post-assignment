@@ -31,6 +31,11 @@ class NeverAnotherViewModel : ViewModel() {
         }
     }
 
+    fun toggleHomeBraColor() {
+        selectedColor = if (selectedColor == BraColor.White) BraColor.Black else BraColor.White
+    }
+  
+
     var onGoingFlow by mutableStateOf(false)
 
     fun carrouselBackButtonClick() {
@@ -48,4 +53,6 @@ class NeverAnotherViewModel : ViewModel() {
             exploreCarrouselIndex += 1
         }
     }
+
+
 }
