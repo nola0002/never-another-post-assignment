@@ -138,12 +138,16 @@ class MainActivity : ComponentActivity() {
                             OrderStatusScreen()
                         }
                         composable("faq-subscreen") {
-                            FaqScreen()
+                            FaqScreen(
+                                onBackClick = { navController.popBackStack() }
+                            )
 
                         }
                     }
                 }
+
             }
+
         }
     }
 }
