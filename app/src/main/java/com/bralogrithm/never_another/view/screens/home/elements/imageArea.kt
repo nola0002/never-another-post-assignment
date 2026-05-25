@@ -23,11 +23,11 @@ fun ImageArea(modifier: Modifier = Modifier) {
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
         )
-        Row(
-            modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 20.dp)
+        Column(
+            modifier = Modifier.align(Alignment.BottomStart).padding(start = 8.dp, bottom = 8.dp)
         ) {
             Text("Digitalt ".uppercase(), style = MaterialTheme.typography.titleLarge, color = Black)
-            Text("Skrædderet".uppercase(), style = MaterialTheme.typography.titleLarge, color = White)
+            Text("Skræddersyet".uppercase(), style = MaterialTheme.typography.titleLarge, color = White)
         }
     }
 }
