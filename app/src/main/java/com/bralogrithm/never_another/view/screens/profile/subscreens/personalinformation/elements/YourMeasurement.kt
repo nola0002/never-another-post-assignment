@@ -32,6 +32,7 @@ fun YourMeasurement(
             fontSize = 14.sp,
             fontFamily = NohemiFontFamily
         )
+
         measurement.forEach { item ->
             MeasurementStyle(title = item.title, value = item.value,  icon = item.icon)
         }

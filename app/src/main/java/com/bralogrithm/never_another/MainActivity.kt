@@ -25,6 +25,7 @@ import com.bralogrithm.never_another.view.screens.profile.subscreens.aftercare.A
 import com.bralogrithm.never_another.view.screens.profile.subscreens.faq.FaqScreen
 import com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation.InformationScreen
 import com.bralogrithm.never_another.view.screens.profile.subscreens.orderstatus.OrderStatusScreen
+import com.bralogrithm.never_another.viewmodel.FlowViewModel
 import com.bralogrithm.never_another.viewmodel.NeverAnotherViewModel
 
 class MainActivity : ComponentActivity() {
@@ -34,6 +35,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             NeverAnotherTheme {
                 val viewModel = viewModel<NeverAnotherViewModel>()
+
+                val flowViewModel = viewModel<FlowViewModel>()
 
                 val navController = rememberNavController()
                 Surface(color = MaterialTheme.colorScheme.background) {
@@ -132,20 +135,27 @@ class MainActivity : ComponentActivity() {
 
                         composable("myinformation-subscreen") {
                             InformationScreen(
-                                onBackClick = { navController.popBackStack() }
+                                onBackClick = { navController.popBackStack() },
+                                upperCircumference = flowViewModel.upperCircumference,
+                                lowerCircumference = flowViewModel.lowerCircumference,
+                                breastSpan = flowViewModel.breastSpan,
+                                breastHeight = flowViewModel.breastHeight
                             )
                         }
+
                         composable("aftercare-subscreen") {
                             AfterCareScreen(
                                 onBackClick = { navController.popBackStack()}
                             )
                         }
+
                         composable("orderstatus-subscreen") {
                             OrderStatusScreen(
                                 onBackClick = {navController.popBackStack()},
                                 onClickGoToAfterCare = {navController.navigate("aftercare-subscreen")}
                             )
                         }
+
                         composable("faq-subscreen") {
                             FaqScreen(
                                 onBackClick = { navController.popBackStack() }
@@ -154,9 +164,7 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 }
-
             }
-
         }
     }
 }

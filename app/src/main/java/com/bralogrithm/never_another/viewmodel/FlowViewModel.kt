@@ -32,35 +32,83 @@ class FlowViewModel : ViewModel() {
 
     var selectedBraColor by mutableStateOf(BraColor.Black)
 
-    var upperSize by mutableStateOf("0")
-    var underSize by mutableStateOf("0")
+
+    fun validateMeasurement(inputText: String, minValue: Int, maxValue: Int): String? {
+        val trimmedText = inputText.trim() // Fjerne mellemrum før og efter string
+
+        if (trimmedText.isEmpty()) { // hvis feltet er submitted med tom streng
+            return "Udfyld feltet" // retuner det her
+        }
+
+        val intValue: Int = trimmedText.toIntOrNull() //gemmer int værdien i en variabel
+            ?: return "Skal være et tal" // hvis ikke det er en int, så returner det her.
+
+        if (intValue < minValue || intValue > maxValue) { //hvis int værdien er mindre end mindste værdien eller større end maksimale værdien
+            return "Skal være mellem $minValue og $maxValue" // Så returner det her
+        }
+
+        return inputText // Hvis det er et tal inden for min og max returner det
+    }
+
+
+
+
+
+
+
+    var upperCircumference by mutableStateOf("0")
+
+    var lowerCircumference by mutableStateOf("0")
+    var breastSpan by mutableStateOf("0")
     var breastHeight by mutableStateOf("0")
-    var breastSize by mutableStateOf("0")
 
     val measurements: List<Pair<String, String>>
         get() = listOf(
-            "Øvre bryst mål" to "$upperSize cm",
-            "Nedre bryst mål" to "$underSize cm",
-            "Bryst spænd" to "$breastSize cm",
-            "Bryst højde" to "$breastHeight cm",
+            "Øvre bryst mål" to "${
+                validateMeasurement(
+                    inputText = upperCircumference,
+                    minValue = 77,
+                    maxValue = 113)
+            } cm",
+            "Nedre bryst mål" to "${
+                validateMeasurement(
+                    inputText = lowerCircumference,
+                    minValue = 65,
+                    maxValue = 100
+                )
+            } cm",
+            "Bryst spænd" to "${
+                validateMeasurement(
+                    inputText = breastSpan,
+                    minValue = 0,
+                    maxValue = 40
+                )
+            } cm",
+            "Bryst højde" to "${
+                validateMeasurement(
+                    inputText = breastHeight,
+                    minValue = 0,
+                    maxValue = 40
+                )
+            } cm",
         )
 
     fun valueForStep(step: Flow): String {
         return when (step) {
-            Flow.UpperSize -> upperSize
-            Flow.UnderSize -> underSize
-            Flow.BreastHeight -> breastHeight
-            Flow.BreastSize -> breastSize
+            Flow.UpperSize -> upperCircumference
+            Flow.UnderSize -> lowerCircumference
+            Flow.BreastHeight -> breastSpan
+            Flow.BreastSize -> breastHeight
             else -> ""
         }
     }
 
     fun setValueForStep(step: Flow, value: String) {
         when (step) {
-            Flow.UpperSize -> upperSize = value
-            Flow.UnderSize -> underSize = value
-            Flow.BreastHeight -> breastHeight = value
-            Flow.BreastSize -> breastSize = value
+            Flow.UpperSize -> upperCircumference = value
+            Flow.UnderSize -> lowerCircumference = value
+            Flow.BreastHeight -> breastSpan = value
+            Flow.BreastSize -> breastHeight = value
             else -> {}
         }
     }

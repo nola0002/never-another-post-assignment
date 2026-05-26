@@ -17,10 +17,8 @@ class NeverAnotherViewModel : ViewModel() {
 
     var selectedSubScreenProfile by mutableStateOf(SubScreensProfile.MyProfile)
 
-
     var exploreCarrouselIndex by mutableStateOf(0)
     var selectedColor by mutableStateOf(BraColor.White)
-
 
     var selectedCarouselPictures by mutableStateOf(picturesForWhiteBraCarrousel)
     fun selectColor(color: BraColor) {

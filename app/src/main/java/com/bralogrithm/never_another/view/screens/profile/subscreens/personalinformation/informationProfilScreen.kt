@@ -19,10 +19,15 @@ import com.bralogrithm.never_another.model.MeasurementItem
 import com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation.elements.InformationHeader
 import com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation.elements.PersonalSection
 import com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation.elements.YourMeasurement
+import org.w3c.dom.Text
 
 @Composable
 fun InformationScreen (
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    upperCircumference: String,
+    lowerCircumference: String,
+    breastSpan: String,
+    breastHeight: String
 ) {
     Scaffold(
     ) { innerPadding ->
@@ -44,14 +49,16 @@ fun InformationScreen (
                 ),
             )
 
+
             YourMeasurement(
                 measurement = listOf(
-                    MeasurementItem("ØVRE BRYST MÅL", "110 cm", Icons.Outlined.ContentPaste),
-                    MeasurementItem("NEDRE BRYST MÅL", "70 cm", Icons.Outlined.ContentPaste),
-                    MeasurementItem("BRYST SPÆND", "15 cm", Icons.Outlined.ContentPaste),
-                    MeasurementItem("BRYST HØJDE", "20 cm", Icons.Outlined.ContentPaste)
+                    MeasurementItem("ØVRE BRYST MÅL", upperCircumference, Icons.Outlined.ContentPaste),
+                    MeasurementItem("NEDRE BRYST MÅL", lowerCircumference, Icons.Outlined.ContentPaste),
+                    MeasurementItem("BRYST SPÆND", breastSpan, Icons.Outlined.ContentPaste),
+                    MeasurementItem("BRYST HØJDE", breastHeight, Icons.Outlined.ContentPaste)
 
                 )
+
             )
 
         }

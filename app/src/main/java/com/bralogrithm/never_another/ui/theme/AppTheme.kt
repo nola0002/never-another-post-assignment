@@ -26,6 +26,7 @@ val InterFontFamily = FontFamily(
     Font(googleFont = GoogleFont("Inter"), fontProvider = provider, weight = FontWeight.Bold)
 )
 
+
 val NohemiFontFamily = FontFamily(
     Font(R.font.nohemi_thin, FontWeight.Thin),
     Font(R.font.nohemi_extralight, FontWeight.ExtraLight),
