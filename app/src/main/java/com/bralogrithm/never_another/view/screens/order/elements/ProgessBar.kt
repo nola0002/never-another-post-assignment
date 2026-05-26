@@ -44,7 +44,7 @@ fun ProgessBar(
             .fillMaxWidth()
             .background(Color.Black)
             .padding(horizontal = 8.dp)
-            .padding(top = 30.dp, bottom = 15.dp),
+            .padding(top = 45.dp, bottom = 15.dp),
             horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
 
