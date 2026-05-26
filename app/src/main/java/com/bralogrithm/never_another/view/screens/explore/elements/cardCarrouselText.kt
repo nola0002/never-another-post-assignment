@@ -84,12 +84,14 @@ fun CardCarrouselText(
                     Column(
                         modifier = Modifier
                             .height(180.dp)
-                            .width(240.dp)
+                            .width(240.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
                     ) {
 
                         Text(
                             modifier = Modifier
-                                .padding(top = 16.dp),
+                                .padding(top = 0.dp),
                             text = listOfCardSectionText[selectedCarrouselText].thickText,
                             fontSize = 24.sp,
                             fontFamily = NohemiFontFamily,
