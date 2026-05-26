@@ -67,7 +67,7 @@ fun NavigationBarBottom(
             // MinBH
             NavigationBarElement(
                 iconResId = R.drawable.bra_svg,
-                text = "MinBH",
+                text = "Bestil",
                 isSelected = selectedScreen == Screen.MyBra,
                 onClick = { onScreenClick(Screen.MyBra) }
             )

@@ -2,9 +2,12 @@ package com.bralogrithm.never_another.view.screens.home
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -76,6 +79,33 @@ fun HomeScreen(
                 selectedColor = selectedColor,
                 onToggleColor = onToggleColor
             )
+
+            Spacer(Modifier.height(40.dp))
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 40.dp)
+            ) {
+                TextButton(
+                    onClick = { onScreenClick(Screen.MyBra) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(60.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        Orange
+                    ),
+                    shape = RoundedCornerShape(50)
+
+                ) {
+                    Text(
+                        color = White,
+                        fontSize = 25.sp,
+                        text =  "Bestil BH".uppercase()
+                    )
+                }
+            }
+
 
             Spacer(Modifier.height(40.dp))
 
