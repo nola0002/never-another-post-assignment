@@ -29,6 +29,7 @@ class NeverAnotherViewModel : ViewModel() {
         }
     }
 
+    // Lavet af Kai - bruges til homescreen bra color toggle.
     fun toggleHomeBraColor() {
         selectedColor = if (selectedColor == BraColor.White) BraColor.Black else BraColor.White
     }
