@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.order.elements
 
+/*
+ * Lavet af Sylvester
+ *
+ * Den grå "FORTSÆT" knap som bruges på de fleste steps i flowet
+ * og som også vises inde i overlay'et.
+ *
+ */
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height

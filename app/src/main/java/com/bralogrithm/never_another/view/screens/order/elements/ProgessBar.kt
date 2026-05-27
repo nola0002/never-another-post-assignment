@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.order.elements
 
+/*
+ * Lavet af Sylvester
+ *
+ * Topbjælken i flowet med en lille progress-indikator + knapper til at gå tilbage og lukke flowet.
+ * pageCount og currentPage kommer fra FlowViewModel, så bjælken altid matcher det aktuelle step.
+ *
+ */
+
 import android.widget.Button
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

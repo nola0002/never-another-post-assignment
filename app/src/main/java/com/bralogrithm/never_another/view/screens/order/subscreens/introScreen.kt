@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.order.subscreens
 
+/*
+ * Lavet af Sylvester
+ *
+ * Den første skærm i flowet som introducerer brugeren til målingen
+ * og viser hvad der skal bruges (målebånd og en BH) via IntroInfoCard.
+ *
+ */
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

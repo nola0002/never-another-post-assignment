@@ -1,5 +1,15 @@
 package com.bralogrithm.never_another.view.screens.order.elements
 
+/*
+ * Lavet af Sylvester (m. ai - se prompt afsnit nedenfor)
+ *
+ * Fuldskærms-videoafspiller til instruktionsvideoerne i videoFlowScreen.
+ * Videoen kører muted og looper, og en lille play/pause-knap ligger i nederste
+ * højre hjørne. 16:9-videoer skaleres til at fylde højden og overflow'e i
+ * siderne, så det giver det fyldte instagram-look.
+ *
+ */
+
 import android.net.Uri
 import android.widget.VideoView
 import androidx.annotation.RawRes
@@ -31,10 +41,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.unit.dp
 
-// Videoerne er 16:9, så de overflow'er ud i siderne når de fylder højden,
-// så det giver det fyldte instagram-look.
-
-// Skrevet med Claude Opus 4.7 for at importere videoer korrekt.
+/*
+ * Videoerne er 16:9, så de overflow'er ud i siderne når de fylder højden,
+ * så det giver det fyldte instagram-look.
+ *
+ * Skrevet med Claude Opus 4.7 for at importere videoer korrekt.
+ *
+ * Prompt brugt:
+ * "Jeg har nogle instruktionsvideoer der skal vises fuldskærm i appen.
+ *  Jeg vil gerne have det til at se ud lidt ligesom instagram eller
+ *  tiktok, hvor videoen fylder hele skærmen og bare bliver klippet i
+ *  siderne i stedet for at have sorte kanter. Videoen skal loope
+ *  og den skal starte af sig selv. Kan vi også få en lille rund
+ *  play/pause-knap nede i hjørnet?"
+ *
+ */
 
 @Composable
 fun VideoPlayer(

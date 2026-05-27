@@ -101,7 +101,8 @@ class MainActivity : ComponentActivity() {
                                         Screen.Profile -> navController.navigate("profile-screen")
                                     }
                                 },
-                                onGoToOrderStatus = { navController.navigate("orderstatus-subscreen") }
+                                onGoToOrderStatus = { navController.navigate("orderstatus-subscreen") },
+                                flowViewModel = flowViewModel
                             )
                         }
 

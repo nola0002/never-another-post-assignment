@@ -1,8 +1,15 @@
 package com.bralogrithm.never_another.view.screens.order.subscreens
 
-import androidx.compose.foundation.layout.Arrangement
+/*
+ * Lavet af Sylvester
+ *
+ * Video-flowet som vises hvis brugeren ikke har målt før og skal guides af videoer.
+ * Bruger FlowViewModel hostet af MainActivity til at hente step, overskrift og video,
+ * så denne skærm kun står for at vise indholdet.
+ *
+ */
+
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -17,8 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.bralogrithm.never_another.R
 import com.bralogrithm.never_another.model.Flow
 
 import com.bralogrithm.never_another.view.screens.order.elements.BuyButton
@@ -27,45 +32,38 @@ import com.bralogrithm.never_another.view.screens.order.elements.OrderStatusButt
 import com.bralogrithm.never_another.view.screens.order.elements.ProgessBar
 import com.bralogrithm.never_another.view.screens.order.elements.Overlay
 import com.bralogrithm.never_another.view.screens.order.elements.VideoPlayer
-import com.bralogrithm.never_another.view.screens.order.elements.convertStepToHeader
 import com.bralogrithm.never_another.viewmodel.FlowViewModel
-
-fun convertStepToVideo(step: Flow): Int {
-    return when (step) {
-        Flow.UpperSize -> R.raw.upper
-        Flow.UnderSize -> R.raw.under
-        Flow.BreastSize -> R.raw.size
-        Flow.BreastHeight -> R.raw.height
-        else -> R.raw.upper
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun VideoFlowScreens(
     onClose: () -> Unit,
     onGoToOrderStatus: () -> Unit,
-    vm: FlowViewModel = viewModel()
+    flowViewModel: FlowViewModel
 ) {
 
-    val step = vm.steps[vm.currentPage]
-    val hasVideo = step !in setOf(Flow.Intro, Flow.CheckSizes, Flow.OrdreConfirmed)
+    // Henter step + om der skal vises video fra ViewModel, så denne skærm kun renderer.
+    val step = flowViewModel.currentStep
+    val hasVideo = flowViewModel.currentStepHasMedia
 
     Scaffold(
-        containerColor = if (hasVideo) Color.Black else Color.White,
+        containerColor = if (hasVideo) Color.Black else Color.White, // sort baggrund når videoen kører
         topBar = {
-            ProgessBar(vm.steps.size, vm.currentPage, vm::lastFlow, onClose)
+            ProgessBar(flowViewModel.steps.size, flowViewModel.currentPage, flowViewModel::lastFlow, onClose)
         },
         bottomBar = {
+            // Vælger bundknap ud fra hvilket step vi er på - køb, ordrestatus eller normalt fortsæt.
             when (step) {
-                Flow.CheckSizes -> BuyButton(onClick = vm::onContinueClicked)
+                Flow.CheckSizes -> BuyButton(onClick = flowViewModel::onContinueClicked)
                 Flow.OrdreConfirmed -> OrderStatusButton(onClick = onGoToOrderStatus)
-                else -> ContinueButton(onClick = vm::onContinueClicked)
+                else -> ContinueButton(onClick = flowViewModel::onContinueClicked)
             }
         }
 
     ) { innerPadding ->
 
+        // Hvis steppet skal vise en video afspilles den med overskrift over,
+        // ellers vises en af de tre faste subscreens (intro/check/confirmed).
         if (hasVideo) {
 
             Box(modifier = Modifier
@@ -73,12 +71,12 @@ fun VideoFlowScreens(
                 .padding(innerPadding)
             ) {
 
-                VideoPlayer(rawResId = convertStepToVideo(step))
+                VideoPlayer(rawResId = flowViewModel.videoForStep(step))
 
                 Text(
                     style = MaterialTheme.typography.headlineSmall,
                     color = Color.White,
-                    text = convertStepToHeader(step.toString()),
+                    text = flowViewModel.headerForStep(step),
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .align(Alignment.TopCenter)
@@ -98,16 +96,16 @@ fun VideoFlowScreens(
                 when (step) {
                     Flow.Intro -> IntroScreen()
                     Flow.CheckSizes -> CheckSizesScreen(
-                        selectedBraColor = vm.selectedBraColor,
-                        onToggleColor = vm::toggleBraColor,
-                        measurements = vm.measurements,
-                        price = vm.price
+                        selectedBraColor = flowViewModel.selectedBraColor,
+                        onToggleColor = flowViewModel::toggleBraColor,
+                        measurements = flowViewModel.measurements,
+                        price = flowViewModel.price
                     )
                     Flow.OrdreConfirmed -> OrdreConfirmedScreen(
-                        orderNumber = vm.orderNumber,
-                        customerName = vm.customerName,
-                        customerAddressLine1 = vm.customerAddressLine1,
-                        customerAddressLine2 = vm.customerAddressLine2
+                        orderNumber = flowViewModel.orderNumber,
+                        customerName = flowViewModel.customerName,
+                        customerAddressLine1 = flowViewModel.customerAddressLine1,
+                        customerAddressLine2 = flowViewModel.customerAddressLine2
                     )
                     else -> Unit
                 }
@@ -118,18 +116,18 @@ fun VideoFlowScreens(
 
     }
 
-    if (vm.showOverlay) {
+    // Bottom sheet til at indtaste målet for det aktuelle step.
+    if (flowViewModel.showOverlay) {
         ModalBottomSheet(
-            onDismissRequest = vm::closeOverlay,
+            onDismissRequest = flowViewModel::closeOverlay,
             containerColor = Color.Black
         ) {
             when (step) {
                 Flow.UpperSize, Flow.UnderSize, Flow.BreastHeight, Flow.BreastSize -> Overlay(
-                    onContinue = vm::nextFlow,
-                    step = step,
-                    type = "Video",
-                    value = vm.valueForStep(step),
-                    onValueChange = { v -> vm.setValueForStep(step, v) }
+                    onContinue = flowViewModel::nextFlow,
+                    header = flowViewModel.headerForStep(step),
+                    value = flowViewModel.valueForStep(step),
+                    onValueChange = { v -> flowViewModel.setValueForStep(step, v) }
                 )
                 else -> Unit
             }
