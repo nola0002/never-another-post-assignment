@@ -1,19 +1,11 @@
 package com.bralogrithm.never_another
 
-import com.bralogrithm.never_another.viewmodel.FlowViewModel
-import com.bralogrithm.never_another.viewmodel.TestingViewModel
+import com.bralogrithm.never_another.viewmodel.MeasurementsViewModel
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
-import org.junit.Assert.*
-
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class ExampleUnitTest {
-    val viewModel = TestingViewModel()
-
+class MeasurementViewModelTest {
+    val viewModel = MeasurementsViewModel()
 
     @Test
     fun `is upper circumference valid`(){
