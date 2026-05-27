@@ -25,6 +25,23 @@ import com.bralogrithm.never_another.view.components.BottomLogo
 import com.bralogrithm.never_another.view.components.NavigationBarBottom
 import com.bralogrithm.never_another.view.screens.home.elements.*
 
+/*
+ * Lavet af Kai
+ *
+ * Her ses hjemmeskærmen og dens opbygning. De benyttede komponenter findes i home/elements/
+ *
+ * Udover navbaren så er den eneste funktionalitet her det at man kan skifte den viste BH's farve.
+ *
+ * Dette component ses under HomeSelectBra composable funktionen, hvor jeg har benyttet en helper funktion
+ * der returnere den korrekte fil til det billed som skal vises alt efter hvilken farve der er valgt.
+ *
+ * HomeSelectBra får passet state fra NeverAnotherViewModel.
+ *
+ * For at bygge den Composable har jeg benyttet ButtonCardSection og TransparentCardSection som er skabt
+ * Noah og Sylvester til nogle af appens andre karrussel komponenter.
+ *
+ */
+
 @Composable
 fun HomeScreen(
     selectedScreen: Screen,
