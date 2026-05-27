@@ -17,16 +17,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -38,25 +33,28 @@ import com.bralogrithm.never_another.view.components.NavigationBarBottom
 import com.bralogrithm.never_another.view.screens.order.elements.SelectionCard
 import com.bralogrithm.never_another.view.screens.order.subscreens.TextFlowScreens
 import com.bralogrithm.never_another.view.screens.order.subscreens.VideoFlowScreens
+import com.bralogrithm.never_another.viewmodel.FlowViewModel
 
 @Composable
 fun MyBraScreen(
     selectedScreen: Screen,
     onScreenClick: (Screen) -> Unit,
-    onGoToOrderStatus: () -> Unit
+    onGoToOrderStatus: () -> Unit,
+    flowViewModel: FlowViewModel // hostes i MainActivity så samme instans deles med subscreens
 ) {
 
-    var videoFlowOnGoing by remember { mutableStateOf(false) }
-    var textFlowOnGoing by remember { mutableStateOf(false) }
-
+    // Viser det aktive flow hvis brugeren har valgt en af de to muligheder,
+    // ellers vises valg-skærmen mellem video og tekst.
     when {
-        videoFlowOnGoing -> VideoFlowScreens(
-            onClose = { videoFlowOnGoing = false },
-            onGoToOrderStatus = onGoToOrderStatus
+        flowViewModel.videoFlowOnGoing -> VideoFlowScreens(
+            onClose = { flowViewModel.closeVideoFlow() },
+            onGoToOrderStatus = onGoToOrderStatus,
+            flowViewModel = flowViewModel
         )
-        textFlowOnGoing -> TextFlowScreens(
-            onClose = { textFlowOnGoing = false },
-            onGoToOrderStatus = onGoToOrderStatus
+        flowViewModel.textFlowOnGoing -> TextFlowScreens(
+            onClose = { flowViewModel.closeTextFlow() },
+            onGoToOrderStatus = onGoToOrderStatus,
+            flowViewModel = flowViewModel
         )
         else -> {
             Scaffold(
@@ -98,7 +96,7 @@ fun MyBraScreen(
                     ) {
 
                         SelectionCard(
-                            onClick = { videoFlowOnGoing = true },
+                            onClick = { flowViewModel.startVideoFlow() },
                             inverted = true,
                             headline = "NEJ",
                             text = "Du vil se alle vores målingsvideoer"
@@ -107,7 +105,7 @@ fun MyBraScreen(
                         Spacer(modifier = Modifier.width(15.dp))
 
                         SelectionCard(
-                            onClick = { textFlowOnGoing = true },
+                            onClick = { flowViewModel.startTextFlow() },
                             inverted = false,
                             headline = "JA",
                             text = "Du vil ikke se vores målingsvideoer"

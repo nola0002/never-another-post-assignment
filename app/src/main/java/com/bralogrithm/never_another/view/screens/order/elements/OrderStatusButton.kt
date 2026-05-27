@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.order.elements
 
+/*
+ * Lavet af Sylvester
+ *
+ * Den grå "SE ORDRE STATUS" knap som vises i bunden på OrdreConfirmed-steppet
+ * og sender brugeren videre til ordrestatus-skærmen.
+ *
+ */
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height

@@ -1,7 +1,15 @@
 package com.bralogrithm.never_another.view.screens.order.subscreens
 
+/*
+ * Lavet af Sylvester
+ *
+ * Tekst-flowet som vises hvis brugeren har målt før og bare vil have billeder + felter.
+ * Bruger FlowViewModel hostet af MainActivity til at læse step, overskrift, billede og værdier,
+ * så denne skærm ikke selv står for state.
+ *
+ */
+
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -22,8 +30,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.bralogrithm.never_another.R
 import com.bralogrithm.never_another.model.Flow
 
 import com.bralogrithm.never_another.view.screens.order.elements.BuyButton
@@ -31,39 +37,30 @@ import com.bralogrithm.never_another.view.screens.order.elements.ContinueButton
 import com.bralogrithm.never_another.view.screens.order.elements.OrderStatusButton
 import com.bralogrithm.never_another.view.screens.order.elements.ProgessBar
 import com.bralogrithm.never_another.view.screens.order.elements.Overlay
-import com.bralogrithm.never_another.view.screens.order.elements.convertStepToHeader
 import com.bralogrithm.never_another.viewmodel.FlowViewModel
-
-fun convertStepToImage(step: Flow): Int {
-    return when (step) {
-        Flow.UpperSize -> R.drawable.text_upper
-        Flow.UnderSize -> R.drawable.text_under
-        Flow.BreastSize -> R.drawable.text_size
-        Flow.BreastHeight -> R.drawable.text_height
-        else -> R.drawable.text_upper
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TextFlowScreens(
     onClose: () -> Unit,
     onGoToOrderStatus: () -> Unit,
-    vm: FlowViewModel = viewModel()
+    flowViewModel: FlowViewModel
 ) {
 
-    val step = vm.steps[vm.currentPage]
-    val hasImage = step !in setOf(Flow.Intro, Flow.CheckSizes, Flow.OrdreConfirmed)
+    // Henter step + om der skal vises billede fra ViewModel, så denne skærm kun renderer.
+    val step = flowViewModel.currentStep
+    val hasImage = flowViewModel.currentStepHasMedia
 
     Scaffold(
         topBar = {
-            ProgessBar(vm.steps.size, vm.currentPage, vm::lastFlow, onClose)
+            ProgessBar(flowViewModel.steps.size, flowViewModel.currentPage, flowViewModel::lastFlow, onClose)
         },
         bottomBar = {
+            // Vælger bundknap ud fra hvilket step vi er på - køb, ordrestatus eller normalt fortsæt.
             when (step) {
-                Flow.CheckSizes -> BuyButton(onClick = vm::onContinueClicked)
+                Flow.CheckSizes -> BuyButton(onClick = flowViewModel::onContinueClicked)
                 Flow.OrdreConfirmed -> OrderStatusButton(onClick = onGoToOrderStatus)
-                else -> ContinueButton(onClick = vm::onContinueClicked)
+                else -> ContinueButton(onClick = flowViewModel::onContinueClicked)
             }
         }
 
@@ -74,12 +71,14 @@ fun TextFlowScreens(
             horizontalAlignment = Alignment.CenterHorizontally)
         {
 
+            // Hvis steppet skal vise et billede vises overskrift + drawable,
+            // ellers vises en af de tre faste subscreens (intro/check/confirmed).
             if (hasImage) {
 
                 Text(
                     style = MaterialTheme.typography.headlineSmall,
                     color = Color.Black,
-                    text = convertStepToHeader(step.toString()),
+                    text = flowViewModel.headerForStep(step),
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -92,8 +91,8 @@ fun TextFlowScreens(
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
-                        painter = painterResource(convertStepToImage(step)),
-                        contentDescription = convertStepToHeader(step.toString()),
+                        painter = painterResource(flowViewModel.imageForStep(step)),
+                        contentDescription = flowViewModel.headerForStep(step),
                         contentScale = ContentScale.Fit,
                         modifier = Modifier
                             .fillMaxSize()
@@ -108,16 +107,16 @@ fun TextFlowScreens(
                 when (step) {
                     Flow.Intro -> IntroScreen()
                     Flow.CheckSizes -> CheckSizesScreen(
-                        selectedBraColor = vm.selectedBraColor,
-                        onToggleColor = vm::toggleBraColor,
-                        measurements = vm.measurements,
-                        price = vm.price
+                        selectedBraColor = flowViewModel.selectedBraColor,
+                        onToggleColor = flowViewModel::toggleBraColor,
+                        measurements = flowViewModel.measurements,
+                        price = flowViewModel.price
                     )
                     Flow.OrdreConfirmed -> OrdreConfirmedScreen(
-                        orderNumber = vm.orderNumber,
-                        customerName = vm.customerName,
-                        customerAddressLine1 = vm.customerAddressLine1,
-                        customerAddressLine2 = vm.customerAddressLine2
+                        orderNumber = flowViewModel.orderNumber,
+                        customerName = flowViewModel.customerName,
+                        customerAddressLine1 = flowViewModel.customerAddressLine1,
+                        customerAddressLine2 = flowViewModel.customerAddressLine2
                     )
                     else -> Unit
                 }
@@ -126,18 +125,18 @@ fun TextFlowScreens(
 
         }
     }
-    if (vm.showOverlay) {
+    // Bottom sheet til at indtaste målet for det aktuelle step.
+    if (flowViewModel.showOverlay) {
         ModalBottomSheet(
-            onDismissRequest = vm::closeOverlay,
+            onDismissRequest = flowViewModel::closeOverlay,
             containerColor = Color.Black
         ) {
             when (step) {
                 Flow.UpperSize, Flow.UnderSize, Flow.BreastHeight, Flow.BreastSize -> Overlay(
-                    onContinue = vm::nextFlow,
-                    step = step,
-                    type = "Text",
-                    value = vm.valueForStep(step),
-                    onValueChange = { v -> vm.setValueForStep(step, v) }
+                    onContinue = flowViewModel::nextFlow,
+                    header = flowViewModel.headerForStep(step),
+                    value = flowViewModel.valueForStep(step),
+                    onValueChange = { v -> flowViewModel.setValueForStep(step, v) }
                 )
                 else -> Unit
             }

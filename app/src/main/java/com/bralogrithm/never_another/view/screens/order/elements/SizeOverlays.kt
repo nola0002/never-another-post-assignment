@@ -1,5 +1,14 @@
 package com.bralogrithm.never_another.view.screens.order.elements
 
+/*
+ * Lavet af Sylvester
+ *
+ * Overlay'et som vises i bottom sheet'et når brugeren skal indtaste et mål.
+ * Modtager header som string - selve mapningen fra step til overskrift ligger i FlowViewModel,
+ * så denne komponent kun viser det den får ind.
+ *
+ */
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,24 +24,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.bralogrithm.never_another.model.Flow
 
-fun convertStepToHeader(
-    step: String
-): String {
-    return when (step) {
-        "UpperSize" -> "Øvre bryst mål"
-        "UnderSize" -> "Nedre bryst mål"
-        "BreastSize" -> "Bryst Spænd"
-        "BreastHeight" -> "Bryst Højde"
-        else -> "Fejl"
-    }
-}
 @Composable
 fun Overlay(
     onContinue: () -> Unit,
-    step: Flow,
-    type: String,
+    header: String,
     value: String,
     onValueChange: (String) -> Unit
 ) {
@@ -41,7 +37,7 @@ fun Overlay(
     Column() {
         Text(
             color = Color.White,
-            text = convertStepToHeader(step.toString()),
+            text = header,
             style = MaterialTheme.typography.titleLarge,
             textAlign = TextAlign.Center,
             modifier = Modifier

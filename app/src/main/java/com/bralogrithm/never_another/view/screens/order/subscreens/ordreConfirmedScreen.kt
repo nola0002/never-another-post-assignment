@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.order.subscreens
 
+/*
+ * Lavet af Sylvester
+ *
+ * Bekræftelses-skærmen som vises efter køb. Viser ordrenummer, kundens navn og adresse
+ * sammen med en loading-gif. Data kommer fra FlowViewModel.
+ *
+ */
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

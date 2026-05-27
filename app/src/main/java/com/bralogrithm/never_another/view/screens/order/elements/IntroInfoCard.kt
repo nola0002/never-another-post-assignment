@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.order.elements
 
+/*
+ * Lavet af Sylvester
+ *
+ * Et lille info-kort med ikon, overskrift og tekst.
+ * Bruges på intro-skærmen til at fortælle hvad brugeren skal have klar inden målingen.
+ *
+ */
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

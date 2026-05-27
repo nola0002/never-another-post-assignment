@@ -1,5 +1,14 @@
 package com.bralogrithm.never_another.view.screens.order.subscreens
 
+/*
+ * Lavet af Sylvester
+ *
+ * Opsummerings-skærmen lige før køb. Viser den valgte farve på BH'en,
+ * brugerens mål og prisen. Farve, mål og pris kommer fra FlowViewModel
+ * så denne skærm kun står for at vise det.
+ *
+ */
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

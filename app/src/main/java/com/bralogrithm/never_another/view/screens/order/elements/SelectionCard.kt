@@ -23,7 +23,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-// Claude sonnet 4.6 har hjulpet med farver og hvordan de skulle sættes op :)
+// Claude sonnet 4.6 har hjulpet med farver og inverted function.
 
 fun convertInvertedToColors(inverted: Boolean): Color {
     return if (!inverted) Color(0xFF4A4A4A) else Color(0xFFF0F0F0)
