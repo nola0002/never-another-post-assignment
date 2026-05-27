@@ -34,15 +34,26 @@ never-another/
 │   └── ExploreBraCarrouselPicture.kt
 │
 ├── viewmodel/
-│   ├── NeverAnotherViewModel.kt
-│   └── FlowViewModel.kt
+│   ├── NeverAnotherViewModel
+    ├── TestingViewModel
+│   └── FlowViewModel
 │
 ├── view/
 │   ├── screens/
 │   │   ├── home/
+│   │   │    ├── elements/
+│   │   │    └── homeScreen.kt
 │   │   ├── explore/
+│   │   │    ├── elements/
+│   │   │    └── exploreScreen.kt
 │   │   ├── order/
+│   │   │    ├── elements/
+│   │   │    ├── subscreens/
+│   │   │    └── orderScreen.kt
 │   │   └── profile/
+│   │        ├── elements/
+│   │        ├── subscreens/
+│   │        └── profileScreen.kt
 │   │
 │   └── components/
 │       ├── navigationBar.kt
