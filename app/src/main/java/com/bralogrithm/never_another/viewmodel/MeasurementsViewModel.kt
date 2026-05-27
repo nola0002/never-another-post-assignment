@@ -2,8 +2,7 @@ package com.bralogrithm.never_another.viewmodel
 
 import androidx.lifecycle.ViewModel
 
-class TestingViewModel : ViewModel() {
-
+class MeasurementsViewModel : ViewModel() {
     fun isUpperCircumferenceValid(inputText: String): Boolean {
         val trimmedText = inputText.trim()
         val parsedValue: Int = trimmedText.toIntOrNull() ?: return false
