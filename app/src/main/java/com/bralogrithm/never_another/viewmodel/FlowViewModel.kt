@@ -1,5 +1,16 @@
 package com.bralogrithm.never_another.viewmodel
 
+/*
+ * Lavet af Sylvester - testet af Noah.
+ *
+ * ViewModel er seperat fra NeverAnotherViewModel af hensyn til separation of concerns.
+ * Denne ViewModel deler ikke logik eller data med NeverAnotherViewModel.
+ *
+ * View modellen bruges til state hosting til vores købsflow og diktere hvilken side som brugeren ser i appen.
+ *  - Enkelt stående data som pris og statisk data er hardcoded i ViewModel og kommer ikke fra model.
+ *
+ */
+
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
