@@ -1,5 +1,12 @@
 package com.bralogrithm.never_another.view.screens.order
 
+/*
+ * Lavet af Sylvester
+ *
+ * Hoved skærmen til order flow.
+ *
+ */
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
