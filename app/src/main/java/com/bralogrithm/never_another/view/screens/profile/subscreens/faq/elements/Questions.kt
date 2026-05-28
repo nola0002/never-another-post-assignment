@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.profile.subscreens.faq.elements
 
+/*
+ * Lavet af Johanne
+ *
+ * Liste-container der løber gennem alle Question-objekter og viser hver enkelt
+ * via QuestionStyle, så FAQ-skærmen kun behøver at sende listen ind.
+ *
+ */
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,6 +29,7 @@ fun Questions(
         verticalArrangement = Arrangement.spacedBy(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        // Render et QuestionStyle-kort for hvert spørgsmål i listen.
         question.forEach { question ->
             QuestionStyle(
                 title = question.title,

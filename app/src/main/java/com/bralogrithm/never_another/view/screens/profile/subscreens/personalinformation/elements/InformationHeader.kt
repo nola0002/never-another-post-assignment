@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation.elements
 
+/*
+ * Lavet af Johanne
+ *
+ * Header til Oplysninger-skærmen. Indeholder tilbage-pil, titlen "OPLYSNINGER",
+ * profilbillede og "SKIFT BILLEDE"-tekst under billedet.
+ *
+ */
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,6 +40,7 @@ fun InformationHeader(onBackClick: () -> Unit){
         horizontalArrangement = Arrangement.spacedBy(15.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
+        // Tilbage-pil som leder brugeren tilbage til profilen.
         Arrow(onBackClick = onBackClick)
         Text(
             text = "OPLYSNINGER",
@@ -40,6 +49,7 @@ fun InformationHeader(onBackClick: () -> Unit){
             fontFamily = NohemiFontFamily
         )
     }
+    // Rundt profilbillede - klippet til en cirkel for at give et profil-look.
     Image(
         painter = painterResource(R.drawable.profile),
         contentDescription = "Profil picture",
@@ -55,6 +65,7 @@ fun InformationHeader(onBackClick: () -> Unit){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // Tekst under billedet - planlagt at kunne åbne et picker-flow til at skifte billede.
         Text(
             text = "SKIFT BILLEDE",
             fontSize = 15.sp,

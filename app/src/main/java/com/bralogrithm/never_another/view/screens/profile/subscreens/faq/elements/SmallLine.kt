@@ -1,5 +1,12 @@
 package com.bralogrithm.never_another.view.screens.profile.subscreens.faq.elements
 
+/*
+ * Lavet af Johanne
+ *
+ * Lille vandret linje der bruges som adskiller mellem spørgsmål og svar i QuestionStyle.
+ *
+ */
+
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider

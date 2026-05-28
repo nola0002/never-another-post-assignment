@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation.elements
 
+/*
+ * Lavet af Johanne
+ *
+ * Enkelt felt med en personlig oplysning - ikon til venstre, titel + værdi i midten
+ * og et "edit"-ikon til højre der signalerer at man kan redigere feltet.
+ *
+ */
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,6 +39,7 @@ fun PersonalStyle(
             .padding(7.dp)
             .width(325.dp)
     ) {
+        // Ikon i venstre side - kommer ind via parameter så det matcher typen af oplysning.
         Column(
         ) {
             Icon(
@@ -39,6 +48,7 @@ fun PersonalStyle(
                 modifier = Modifier.padding(end = 12.dp)
             )
         }
+        // Midten viser titel (lille tekst) og selve værdien under den.
         Column(
             modifier = Modifier.weight(1f)
         ) {
@@ -53,6 +63,7 @@ fun PersonalStyle(
                 fontFamily = NohemiFontFamily)
 
         }
+        // Edit-ikon i højre side som visuel cue til at feltet kan redigeres.
         Icon(
             imageVector = Icons.Outlined.Edit,
             contentDescription = null,

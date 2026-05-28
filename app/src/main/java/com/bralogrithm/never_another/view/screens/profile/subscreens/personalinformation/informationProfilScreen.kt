@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation
 
+/*
+ * Lavet af Johanne
+ *
+ * Hoved skærmen til "Oplysninger"-undersiden under profilen.
+ * Viser header, personlige oplysninger og brugerens mål (som kommer ind via parametre).
+ *
+ */
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,8 +47,11 @@ fun InformationScreen (
             horizontalAlignment = Alignment.CenterHorizontally,
 
         ) {
+            // Header med tilbage-pil, profilbillede og "skift billede"-tekst.
             InformationHeader(onBackClick = onBackClick)
 
+            // Personlige oplysninger som navn, adresse og email - hardcoded indtil
+            // vi har en rigtig brugerprofil at læse fra.
             PersonalSection(
                 items = listOf(
                     InfoItem("FULDE NAVN", "Henriette Jensen Andersen", Icons.Outlined.Sell),
@@ -50,6 +61,8 @@ fun InformationScreen (
             )
 
 
+            // Brugerens mål kommer ind som parametre fra MainActivity/FlowViewModel,
+            // så de viser de seneste indtastede værdier fra ordreflowet.
             YourMeasurement(
                 measurement = listOf(
                     MeasurementItem("ØVRE BRYST MÅL", upperCircumference, Icons.Outlined.ContentPaste),

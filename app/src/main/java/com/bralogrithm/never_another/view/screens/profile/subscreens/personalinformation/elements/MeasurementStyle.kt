@@ -1,5 +1,14 @@
 package com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation.elements
 
+/*
+ * Lavet af Johanne
+ *
+ * Enkelt felt med et kropsmål - ikon til venstre, titel + værdi i midten
+ * og et "edit"-ikon til højre der signalerer at målet kan redigeres.
+ * Spejler PersonalStyle, men bruges til MeasurementItem i stedet for InfoItem.
+ *
+ */
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,6 +40,7 @@ fun MeasurementStyle(
             .padding(7.dp)
             .width(325.dp)
     ) {
+        // Ikon i venstre side - kommer ind via parameter for at matche typen af mål.
         Column(
         ) {
             Icon(
@@ -39,6 +49,7 @@ fun MeasurementStyle(
                 modifier = Modifier.padding(end = 12.dp)
             )
         }
+        // Midten viser navnet på målet (lille tekst) og selve værdien under.
         Column(
             modifier = Modifier.weight(1f)
         ) {
@@ -53,6 +64,7 @@ fun MeasurementStyle(
                 fontFamily = NohemiFontFamily)
 
         }
+        // Edit-ikon i højre side som visuel cue til at målet kan redigeres.
         Icon(
             imageVector = Icons.Outlined.Edit,
             contentDescription = null,

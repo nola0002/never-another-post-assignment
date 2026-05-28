@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.profile.subscreens.faq.elements
 
+/*
+ * Lavet af Johanne
+ *
+ * Et enkelt FAQ-kort med spørgsmål, en lille adskillende linje og svaret nedenunder.
+ * Bruges af Questions til at vise hvert element i listen.
+ *
+ */
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,12 +39,15 @@ fun QuestionStyle(
             .width(325.dp),
     ) {
         Column() {
+            // Selve spørgsmålet vises øverst i kortet.
             Text(
                 text = title,
                 fontWeight = Medium,
                 fontFamily = NohemiFontFamily
             )
+            // Tynd linje der adskiller spørgsmål og svar visuelt.
             SmallLine()
+            // Svaret vises i lettere vægt for at adskille det fra titlen.
             Text(
                 text = answer,
                 fontWeight = FontWeight.ExtraLight,

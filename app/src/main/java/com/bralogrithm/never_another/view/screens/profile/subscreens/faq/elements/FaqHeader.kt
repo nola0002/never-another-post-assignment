@@ -1,5 +1,12 @@
 package com.bralogrithm.never_another.view.screens.profile.subscreens.faq.elements
 
+/*
+ * Lavet af Johanne
+ *
+ * Header til FAQ-skærmen med tilbage-pil og titlen "FAQ".
+ *
+ */
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,6 +30,7 @@ fun FaqHeader(onBackClick: () -> Unit) {
         horizontalArrangement = Arrangement.spacedBy(15.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
+        // Tilbage-pil som leder brugeren tilbage til profilen.
         Arrow(onBackClick = onBackClick)
         Text(
             text = "FAQ",

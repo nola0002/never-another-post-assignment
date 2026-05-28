@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.model
 
+/*
+ * Lavet af Johanne
+ *
+ * Statisk liste af alle FAQ-spørgsmål og svar der vises på FAQ-skærmen.
+ * Holdes adskilt fra UI'en så indholdet nemt kan redigeres uden at røre Compose-koden.
+ *
+ */
+
 val questionlist = listOf(
     Question(
         title = "HVORNÅR MODTAGER JEG MIN ORDRE?",

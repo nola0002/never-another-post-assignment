@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation.elements
 
+/*
+ * Lavet af Johanne
+ *
+ * Sektionen med personlige oplysninger (navn, adresse, email).
+ * Tager en liste af InfoItem ind og renderer hvert element med PersonalStyle.
+ *
+ */
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,12 +34,14 @@ fun PersonalSection(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.Start,
     ) {
+        // Overskrift for sektionen.
         Text(
             text = "PERSONLIGE OPLYSNINGER",
             fontWeight = Medium,
             fontSize = 14.sp,
             fontFamily = NohemiFontFamily
         )
+        // Render et PersonalStyle-felt for hver oplysning i listen.
         items.forEach { item ->
             PersonalStyle(title = item.title, value = item.value, icon = item.icon)
         }

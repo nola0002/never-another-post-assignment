@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.profile.subscreens.personalinformation.elements
 
+/*
+ * Lavet af Johanne
+ *
+ * Sektionen "DINE MÅL" der viser brugerens kropsmål.
+ * Tager en liste af MeasurementItem ind og renderer hvert mål med MeasurementStyle.
+ *
+ */
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,6 +34,7 @@ fun YourMeasurement(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.Start,
     ) {
+        // Overskrift for sektionen.
         Text(
             text = "DINE MÅL",
             fontWeight = Medium,
@@ -33,6 +42,7 @@ fun YourMeasurement(
             fontFamily = NohemiFontFamily
         )
 
+        // Render et MeasurementStyle-felt for hvert mål i listen.
         measurement.forEach { item ->
             MeasurementStyle(title = item.title, value = item.value,  icon = item.icon)
         }
