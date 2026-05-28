@@ -1,5 +1,15 @@
 package com.bralogrithm.never_another.view.screens.explore.elements
 
+/*
+ * Lavet af Noah
+ *
+ * Tekst-karrusel hvor brugeren kan bladre mellem korte tekstafsnit om bh'en.
+ * Bruger samme index som billed-karruselen så de skifter synkront.
+ * Pilene findes både som synlige knapper i siderne og som usynlige knapper
+ * inde i kortet for et større klikfelt.
+ *
+ */
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -89,6 +99,7 @@ fun CardCarrouselText(
                         verticalArrangement = Arrangement.Center
                     ) {
 
+                        // Den tykke overskrift øverst i kortet.
                         Text(
                             modifier = Modifier
                                 .padding(top = 0.dp),
@@ -101,6 +112,7 @@ fun CardCarrouselText(
 
                         Spacer(modifier = Modifier.height(16.dp))
 
+                        // Den tynde brødtekst under overskriften.
                         Text(
                             text = listOfCardSectionText[selectedCarrouselText].thinText,
                             fontSize = 16.sp,

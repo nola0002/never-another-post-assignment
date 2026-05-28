@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.explore.elements
 
+/*
+ * Lavet af Noah
+ *
+ * Synlig pil-knap der bruges som tilbage/frem-knap på karruselerne.
+ * Selve ikonet kommer ind via image-parameteren.
+ *
+ */
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height

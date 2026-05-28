@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.explore.elements
 
+/*
+ * Lavet af Noah
+ *
+ * Statisk tekstblok i bunden af ExploreScreen der forklarer leveringstiden
+ * og hvorfor den er længere end fast fashion.
+ *
+ */
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth

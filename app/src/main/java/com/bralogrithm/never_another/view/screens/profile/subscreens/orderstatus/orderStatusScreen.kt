@@ -1,5 +1,14 @@
 package com.bralogrithm.never_another.view.screens.profile.subscreens.orderstatus
 
+/*
+ * Lavet af Noah
+ *
+ * Skærm der viser brugerens nuværende ordrestatus.
+ * Indholdet er primært et stort billede med statussen, og nederst på billedet
+ * er et usynligt klikfelt der leder videre til AfterCare-skærmen.
+ *
+ */
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -80,6 +89,7 @@ fun OrderStatusScreen(
 
             ){
 
+                // Statisk billede der viser ordrestatussen visuelt - lavet i Figma.
                 Image(
                     painter = painterResource(R.drawable.orderstatuspic),
                     contentDescription = "NeverAnother Branding and a picture with 3D knitted in one piece",
@@ -89,6 +99,8 @@ fun OrderStatusScreen(
                     contentScale = ContentScale.FillWidth,
                 )
 
+                // Usynligt klikfelt placeret oven på "AfterCare"-knappen i billedet,
+                // så brugeren kan trykke videre til AfterCare-skærmen.
                 Box(
                     modifier = Modifier
                         .offset(y = 690.dp)

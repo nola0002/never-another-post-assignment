@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.explore.elements
 
+/*
+ * Lavet af Noah
+ *
+ * Samlet karrusel-element der både viser billed-karruselen og farvevælgeren under.
+ * Holder de to dele samlet så ExploreScreen kun behøver at sende state og callbacks ind.
+ *
+ */
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,6 +43,7 @@ fun CardCarrouselPictureAndSelector(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // Selve billed-karruselen med tilbage/frem-knapper.
         CardCarrouselPicture(
             listOfCardCarrouselPictures = listOfCardCarrouselPictures,
             selectedCarrouselPicture = selectedCarrousel,
@@ -55,6 +64,7 @@ fun CardCarrouselPictureAndSelector(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Column() {
+                // Tekst der følger den valgte farve - skifter mellem "Hvid" og "Sort".
                 Text(
                     text = if (selectedColor == BraColor.White) {
                         "Farve: Hvid"
@@ -86,6 +96,7 @@ fun CardCarrouselPictureAndSelector(
             ) {
 
 
+                // To farve-prikker som vælger mellem hvid og sort variant af bh'en.
                 ColorDotCarrousel(
                     color = Color(0xffF2F1ED),
                     selected = selectedColor == BraColor.White,

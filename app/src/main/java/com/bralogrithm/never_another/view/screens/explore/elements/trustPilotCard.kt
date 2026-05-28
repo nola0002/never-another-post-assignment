@@ -1,5 +1,13 @@
 package com.bralogrithm.never_another.view.screens.explore.elements
 
+/*
+ * Lavet af Noah
+ *
+ * Et enkelt Trustpilot-anmeldelseskort med navn, dato, fem stjerner og selve anmeldelsen.
+ * Bruges af ExploreScreen til at vise listen af anmeldelser.
+ *
+ */
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -78,6 +86,7 @@ fun TrustPilotCard(
                 }
 
 
+                // Viser 5 udfyldte stjerner. Hardkodet til 5 da vi kun viser top-anmeldelser.
                 Row() {
                     if (amountOfStars == 5){
                         Image(

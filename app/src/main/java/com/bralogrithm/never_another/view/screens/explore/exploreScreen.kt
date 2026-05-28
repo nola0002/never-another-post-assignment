@@ -1,5 +1,15 @@
 package com.bralogrithm.never_another.view.screens.explore
 
+/*
+ * Lavet af Noah
+ *
+ * Hoved skærmen for Explore-fanen. Scrollbar side der præsenterer brandet
+ * med billed-karruseller, tekst-karruseller, Trustpilot-kort og leveringstid.
+ * Alt state (valgt farve, karrusel-index, lister) kommer ind via parametre
+ * fra NeverAnotherViewModel så denne skærm kun renderer.
+ *
+ */
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -85,6 +95,7 @@ fun ExploreScreen(
                     .height(40.dp)
             )
 
+            // Stor brand-overskrift med håndtegnet streg ovenover.
             TextWithBrushStroke(
                 text = "Skabt til dig.\n" +
                         "Kun til dig.",
@@ -103,6 +114,7 @@ fun ExploreScreen(
                     .height(30.dp)
             )
 
+            // Billed-karrusel af bh'en med farvevælger under (hvid/sort).
             CardCarrouselPictureAndSelector(
                 listOfCardCarrouselPictures = listOfCardCarrouselPictures,
                 selectedCarrousel = selectedCarrousel,
@@ -130,6 +142,7 @@ fun ExploreScreen(
                     .height(50.dp)
             )
 
+            // Første tekst-karrusel - deler index med billed-karruselen så de skifter sammen.
             CardCarrouselText(
                 listOfCardSectionText = listOfCardSectionTextOne,
                 selectedCarrouselText = selectedCarrousel,
@@ -175,6 +188,7 @@ fun ExploreScreen(
             )
 
 
+            // Render et TrustPilotCard for hver anmeldelse i listen fra ViewModel.
             trustPilotCards.forEach { trustPilotCard ->
                 TrustPilotCard(
                     name = trustPilotCard.name,
@@ -232,6 +246,7 @@ fun ExploreScreen(
                     .height(16.dp)
             )
 
+            // Anden tekst-karrusel længere nede - bruger samme index så de skifter synkront.
             CardCarrouselText(
                 listOfCardSectionText = listOfCardSectionTextTwo,
                 selectedCarrouselText = selectedCarrousel,
@@ -256,6 +271,7 @@ fun ExploreScreen(
                     .height(50.dp)
             )
 
+            // Leveringstid-tekstblok nederst på siden.
             DeliveryTimeTexts()
 
 

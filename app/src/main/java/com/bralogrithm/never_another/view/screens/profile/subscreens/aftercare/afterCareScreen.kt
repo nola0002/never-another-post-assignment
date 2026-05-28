@@ -1,5 +1,14 @@
 package com.bralogrithm.never_another.view.screens.profile.subscreens.aftercare
 
+/*
+ * Lavet af Noah
+ *
+ * AfterCare-skærmen med plejeguide til bh'en.
+ * Øverst vises et brand-billede, derefter en sort sektion med vaskeanvisning
+ * og til sidst seks trin-bokse (AfterCareStepBoxes) med selve plejeråd.
+ *
+ */
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -110,6 +119,7 @@ fun AfterCareScreen(
 
             }
 
+            // Sort sektion med vaskeanvisning. Skiller sig visuelt ud fra resten.
             Box(
                 modifier = Modifier
                     .background(Color.Black)
@@ -149,6 +159,8 @@ fun AfterCareScreen(
                 }
             }
 
+            // Seks plejetrin der skifter mellem hvid og sort baggrund, og hvor nummeret
+            // skifter side, så det giver en zigzag-effekt ned ad siden.
             AfterCareStepBoxes(
                 boxColor = Color.White,
                 stepNumber = "1",
