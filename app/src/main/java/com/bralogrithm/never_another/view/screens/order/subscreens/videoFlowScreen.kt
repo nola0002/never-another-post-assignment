@@ -124,10 +124,11 @@ fun VideoFlowScreens(
         ) {
             when (step) {
                 Flow.UpperSize, Flow.UnderSize, Flow.BreastHeight, Flow.BreastSize -> Overlay(
-                    onContinue = flowViewModel::nextFlow,
+                    onContinue = { flowViewModel.onOverlayContinueClicked() },
                     header = flowViewModel.headerForStep(step),
                     value = flowViewModel.valueForStep(step),
-                    onValueChange = { v -> flowViewModel.setValueForStep(step, v) }
+                    onValueChange = { v -> flowViewModel.setValueForStep(step, v) },
+                    error = flowViewModel.measurementError
                 )
                 else -> Unit
             }
