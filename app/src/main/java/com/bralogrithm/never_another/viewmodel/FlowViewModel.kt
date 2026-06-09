@@ -90,32 +90,21 @@ class FlowViewModel : ViewModel() {
     }
 
     // Åbner/lukker det valgte flow - kaldes fra MyBraScreen og subscreens.
-    fun startVideoFlow() { videoFlowOnGoing = true }
-    fun closeVideoFlow() { videoFlowOnGoing = false }
-
-    fun startTextFlow() { textFlowOnGoing = true }
-    fun closeTextFlow() { textFlowOnGoing = false }
-
-
-    // Denne metode er lavet af Noah til Android Test
-    fun validateMeasurement(inputText: String, minValue: Int, maxValue: Int): String? {
-        val trimmedText = inputText.trim() // Fjerne mellemrum før og efter string
-
-        if (trimmedText.isEmpty()) { // hvis feltet er submitted med tom streng
-            return "Udfyld feltet" // retuner det her
-        }
-
-        val intValue: Int = trimmedText.toIntOrNull() //gemmer int værdien i en variabel
-            ?: return "Skal være et tal" // hvis ikke det er en int, så returner det her.
-
-        if (intValue < minValue || intValue > maxValue) { //hvis int værdien er mindre end mindste værdien eller større end maksimale værdien
-            return "Skal være mellem $minValue og $maxValue" // Så returner det her
-        }
-
-        return inputText // Hvis det er et tal inden for min og max returner det
+    fun startVideoFlow() {
+        videoFlowOnGoing = true
     }
 
+    fun closeVideoFlow() {
+        videoFlowOnGoing = false
+    }
 
+    fun startTextFlow() {
+        textFlowOnGoing = true
+    }
+
+    fun closeTextFlow() {
+        textFlowOnGoing = false
+    }
 
 
 
@@ -129,33 +118,10 @@ class FlowViewModel : ViewModel() {
 
     val measurements: List<Pair<String, String>>
         get() = listOf(
-            "Øvre bryst mål" to "${
-                validateMeasurement(
-                    inputText = upperCircumference,
-                    minValue = 77,
-                    maxValue = 113)
-            } cm",
-            "Nedre bryst mål" to "${
-                validateMeasurement(
-                    inputText = lowerCircumference,
-                    minValue = 65,
-                    maxValue = 100
-                )
-            } cm",
-            "Bryst spænd" to "${
-                validateMeasurement(
-                    inputText = breastSpan,
-                    minValue = 0,
-                    maxValue = 40
-                )
-            } cm",
-            "Bryst højde" to "${
-                validateMeasurement(
-                    inputText = breastHeight,
-                    minValue = 0,
-                    maxValue = 40
-                )
-            } cm",
+            "Øvre bryst mål" to "${upperCircumference} cm",
+            "Nedre bryst mål" to "${lowerCircumference} cm",
+            "Bryst spænd" to "${breastSpan} cm",
+            "Bryst højde" to "${breastHeight} cm",
         )
 
     fun valueForStep(step: Flow): String {
@@ -178,8 +144,50 @@ class FlowViewModel : ViewModel() {
         }
     }
 
-    fun openOverlay() { showOverlay = true }
-    fun closeOverlay() { showOverlay = false}
+
+    // Fejlbesked for det aktuelle mål-overlay, eller null hvis værdien er gyldig.
+    var measurementError by mutableStateOf<String?>(null)
+
+    // Gyldigt interval pr. step - samme grænser som measurements-listen ovenfor.
+    fun rangeForStep(step: Flow): Pair<Int, Int>? {
+        return when (step) {
+            Flow.UpperSize -> 77 to 113    // På baggrund af neverAnothers mulige mål
+            Flow.UnderSize -> 65 to 100    // På baggrund af neverAnothers mulige mål
+            Flow.BreastHeight -> 0 to 40   //
+            Flow.BreastSize -> 0 to 40     //
+            else -> null
+        }
+    }
+
+    // Returnerer en fejlbesked hvis input er umuligt/tomt, ellers null.
+    fun errorForStep(step: Flow, inputText: String): String? {
+        val (min, max) = rangeForStep(step) ?: return null
+        val trimmed = inputText.trim()
+        if (trimmed.isEmpty()) return "Udfyld feltet"
+        val value = trimmed.toIntOrNull() ?: return "Skal være et tal"
+        if (value < min || value > max) return "Skal være mellem $min og $max cm"
+        return null
+    }
+
+    // Kaldes af FORTSÆT-knappen INDE i overlay'et. overlay'et bliver kaldt i både textflowscreen og videoflowscreen
+    // Går kun videre hvis målet er gyldigt - ellers sættes fejlbeskeden.
+    fun onOverlayContinueClicked() {
+        val step = currentStep
+        val error = errorForStep(step, valueForStep(step))
+        if (error != null) {
+            measurementError = error
+        } else {
+            measurementError = null
+            nextFlow()
+        }
+    }
+
+
+
+    fun closeOverlay() {
+        showOverlay = false
+        measurementError = null
+    }
 
     fun onContinueClicked() {
         val step = steps[currentPage]
@@ -196,7 +204,8 @@ class FlowViewModel : ViewModel() {
     }
 
     fun toggleBraColor() {
-        selectedBraColor = if (selectedBraColor == BraColor.Black) BraColor.White else BraColor.Black
+        selectedBraColor =
+            if (selectedBraColor == BraColor.Black) BraColor.White else BraColor.Black
     }
 
 }

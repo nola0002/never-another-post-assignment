@@ -30,7 +30,8 @@ fun Overlay(
     onContinue: () -> Unit,
     header: String,
     value: String,
-    onValueChange: (String) -> Unit
+    onValueChange: (String) -> Unit,
+    error: String? = null
 ) {
     ContinueButton(onClick = onContinue)
 
@@ -47,9 +48,30 @@ fun Overlay(
         Spacer(modifier = Modifier
             .height(10.dp))
 
+
+        // Fejlbesked vises kun når der er en - Noah
+        if (error != null) {
+            Spacer(modifier = Modifier
+                .height(8.dp))
+
+            Text(
+                text = error,
+                color = Color(0xFFFF5A5F),
+                style = MaterialTheme.typography.bodyMedium,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp)
+            )
+        }
+
+        Spacer(modifier = Modifier
+            .height(10.dp))
+
         TextField(
             value = value,
             onValueChange = onValueChange,
+            isError = error != null,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number
             ),
