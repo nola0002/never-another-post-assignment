@@ -31,7 +31,7 @@ class InstrumentedTest {
         assertEquals("com.bralogrithm.never_another", appContext.packageName)
     }
 
-    // Test the Navigation Bar UI
+    // Test af Navigation Bar UI
     @Test
     fun navbarDisplaysAllItemsAndTriggersCallbacks() {
         var clickedScreen: Screen? = null
@@ -58,5 +58,10 @@ class InstrumentedTest {
         assertEquals(Screen.Profile, clickedScreen)
 
     }
+
+    // Test af købsflow UI
+
+    // Test af HomePage karrusel
+
 
 }
