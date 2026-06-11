@@ -47,15 +47,7 @@ class MainActivity : ComponentActivity() {
                         composable("home-screen") {
                             HomeScreen(
                                 selectedScreen = viewModel.selectedScreen,
-                                onScreenClick = { screen ->
-                                    viewModel.selectedScreen = screen
-                                    when (screen) {
-                                        Screen.Home -> navController.navigate("home-screen")
-                                        Screen.Explore -> navController.navigate("explore-screen")
-                                        Screen.MyBra -> navController.navigate("mybra-screen")
-                                        Screen.Profile -> navController.navigate("profile-screen")
-                                    }
-                                },
+                                onScreenClick = { screenClicked -> viewModel.onScreenSelected(navController, screenClicked) }, // Naviger til den klikkede skærm
                                 selectedColor = viewModel.selectedColor,
                                 onToggleColor = { viewModel.toggleHomeBraColor() }
                             )
@@ -65,15 +57,7 @@ class MainActivity : ComponentActivity() {
                         composable("explore-screen") {
                             ExploreScreen(
                                 selectedScreen = viewModel.selectedScreen,
-                                onScreenClick = { screen ->
-                                    viewModel.selectedScreen = screen
-                                    when (screen) {
-                                        Screen.Home -> navController.navigate("home-screen")
-                                        Screen.Explore -> navController.navigate("explore-screen")
-                                        Screen.MyBra -> navController.navigate("mybra-screen")
-                                        Screen.Profile -> navController.navigate("profile-screen")
-                                    }
-                                },
+                                onScreenClick = { screenClicked -> viewModel.onScreenSelected(navController, screenClicked) }, // Naviger til den klikkede skærm
                                 listOfCardCarrouselPictures = viewModel.selectedCarouselPictures,
                                 selectedColor = viewModel.selectedColor,
                                 onClickWhite = { viewModel.selectColor(BraColor.White) },
@@ -92,15 +76,7 @@ class MainActivity : ComponentActivity() {
                         composable("mybra-screen") {
                             MyBraScreen(
                                 selectedScreen = viewModel.selectedScreen,
-                                onScreenClick = { screen ->
-                                    viewModel.selectedScreen = screen
-                                    when (screen) {
-                                        Screen.Home -> navController.navigate("home-screen")
-                                        Screen.Explore -> navController.navigate("explore-screen")
-                                        Screen.MyBra -> navController.navigate("mybra-screen")
-                                        Screen.Profile -> navController.navigate("profile-screen")
-                                    }
-                                },
+                                onScreenClick = { screenClicked -> viewModel.onScreenSelected(navController, screenClicked) }, // Naviger til den klikkede skærm
                                 onGoToOrderStatus = { navController.navigate("orderstatus-subscreen") },
                                 flowViewModel = flowViewModel
                             )
@@ -111,25 +87,8 @@ class MainActivity : ComponentActivity() {
                         composable("profile-screen") {
                             ProfileScreen(
                                 selectedScreen = viewModel.selectedScreen,
-                                onScreenClick = { screen ->
-                                    viewModel.selectedScreen = screen
-                                    when (screen) {
-                                        Screen.Home -> navController.navigate("home-screen")
-                                        Screen.Explore -> navController.navigate("explore-screen")
-                                        Screen.MyBra -> navController.navigate("mybra-screen")
-                                        Screen.Profile -> navController.navigate("profile-screen")
-                                    }
-                                },
-                                onAction = { subScreen ->
-                                    viewModel.selectedSubScreenProfile = subScreen
-                                    when (subScreen) {
-                                        SubScreensProfile.MyInformation -> navController.navigate("myinformation-subscreen")
-                                        SubScreensProfile.AfterCare -> navController.navigate("aftercare-subscreen")
-                                        SubScreensProfile.OrderStatus -> navController.navigate("orderstatus-subscreen")
-                                        SubScreensProfile.FAQ -> navController.navigate("faq-subscreen")
-                                        else -> {navController.popBackStack()}
-                                    }
-                                }
+                                onScreenClick = { screenClicked -> viewModel.onScreenSelected(navController, screenClicked) }, // Naviger til den klikkede skærm
+                                onAction = { subScreenClicked -> viewModel.onSubScreenProfileSelected(navController, subScreenClicked)}
                             )
                         }
 
