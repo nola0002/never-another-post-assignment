@@ -6,7 +6,6 @@ data class Label(
 )
 
 enum class SubScreensProfile {
-    MyProfile,
     MyInformation,
     AfterCare,
     OrderStatus,

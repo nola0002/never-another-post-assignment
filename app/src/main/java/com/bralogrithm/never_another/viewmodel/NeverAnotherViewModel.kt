@@ -14,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
 import com.bralogrithm.never_another.model.BraColor
 import com.bralogrithm.never_another.model.Screen
 import com.bralogrithm.never_another.model.SubScreensProfile
@@ -26,8 +27,35 @@ class NeverAnotherViewModel : ViewModel() {
     // Hvilken hovedfane der vises i bunden af appen (Home, Explore, MyBra, Profile).
     var selectedScreen by mutableStateOf(Screen.Home)
 
+    fun onScreenSelected(navController: NavController, screen: Screen) {
+        selectedScreen = screen   // staten
+        val route = when (screen) {
+            Screen.Home    -> "home-screen"
+            Screen.Explore -> "explore-screen"
+            Screen.MyBra   -> "mybra-screen"
+            Screen.Profile -> "profile-screen"
+        }
+        navController.navigate(route) {
+            launchSingleTop = true  // Genbruger skærmen hvis den allerede er øverst i backstacken
+            restoreState = true // Gemme det state der var tilgængeligt da man forlod siden
+        }
+    }
+
+
     // Hvilken underside af profilen der vises (oplysninger, FAQ, ordrestatus osv.).
-    var selectedSubScreenProfile by mutableStateOf(SubScreensProfile.MyProfile)
+    var selectedSubScreenProfile by mutableStateOf(SubScreensProfile.MyInformation)
+
+    fun onSubScreenProfileSelected(navController: NavController, subScreen: SubScreensProfile) {
+        selectedSubScreenProfile = subScreen   // Staten
+
+        val route = when (subScreen) {
+            SubScreensProfile.MyInformation -> "myinformation-subscreen"
+            SubScreensProfile.AfterCare     -> "aftercare-subscreen"
+            SubScreensProfile.OrderStatus   -> "orderstatus-subscreen"
+            SubScreensProfile.FAQ           -> "faq-subscreen"
+        }
+        navController.navigate(route)
+    }
 
     // State til karruselerne på Explore-fanen og valgt farve på bh'en.
     var exploreCarrouselIndex by mutableStateOf(0)
@@ -74,6 +102,7 @@ class NeverAnotherViewModel : ViewModel() {
             exploreCarrouselIndex += 1
         }
     }
+
 
 
 }

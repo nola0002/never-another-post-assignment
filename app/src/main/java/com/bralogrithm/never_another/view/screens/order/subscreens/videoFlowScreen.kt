@@ -109,11 +109,8 @@ fun VideoFlowScreens(
                     )
                     else -> Unit
                 }
-
             }
-
         }
-
     }
 
     // Bottom sheet til at indtaste målet for det aktuelle step.
@@ -134,5 +131,4 @@ fun VideoFlowScreens(
             }
         }
     }
-
 }
